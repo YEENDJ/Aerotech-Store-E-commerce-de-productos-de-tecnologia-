@@ -1,5 +1,5 @@
 
-interface IProducts {
+export interface IProducts {
 
     id: number
     name: string
@@ -10,4 +10,3 @@ interface IProducts {
     categoryId: number
 }
 
-export default IProducts
