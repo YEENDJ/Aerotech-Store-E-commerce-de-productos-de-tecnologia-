@@ -4,56 +4,74 @@ import { IProducts } from "@/interfaces/Iproducts";
 export const ListProducts: IProducts[] = [
     {
         "id": 1,
-        "name": "iPhone 11",
-        "description": "Experience power and elegance with the iPhone 11: capture stunning moments with its dual-camera system, enjoy exceptional performance, and immerse yourself in a brilliant Liquid Retina display. Discover a world of possibilities in the palm of your hand!",
-        "price": 699,
+        "name": "DJI Neo",
+        "description": "El DJI Neo es un dron compacto y ligero con cámara 4K, vuelo estable y funciones inteligentes. La versión sencilla incluye el dron, una batería, control remoto, hélices de repuesto, cable USB-C y protector del gimbal para mayor seguridad.",
+        "price": 999000,
         "stock": 10,
-        "image": "https://tecnoimportaciones.com/wp-content/uploads/2024/10/1725526207_IMG_2326881.jpg",
+        "image": "https://se-cdn.djiits.com/tpc/uploads/carousel/image/a1c8825ca01a2887f29d59f757c36ebb@ultra.jpg",
         "categoryId": 1
     },
     {
         "id": 2,
-        "name": "MacBook Air",
-        "description": "Embrace efficiency and sophistication with the MacBook Air: lightweight design meets powerful performance, stunning Retina display brings your work to life, and all-day battery life keeps you productive wherever you go. Elevate your computing experience with the MacBook Air.",
-        "price": 999,
+        "name": "DJI Neo Fly More Combo",
+        "description": "El DJI Neo es un dron compacto y potente con cámara 4K y vuelo inteligente. La versión Fly More Combo incluye tres baterías, control remoto, hub de carga bidireccional, hélices de repuesto, protectores de hélices, cable USB-C y estuche de transporte.",
+        "price": 1799900,
         "stock": 10,
-        "image": "https://www.apple.com/v/macbook-air/a/images/meta/og__d5k62k8b4qka.png",
+        "image": "https://tiendadefotografia.com.co/wp-content/uploads/2024/12/dji-neo-fly-more-combo-in-box-Recovered.webp-2.webp",
         "categoryId": 2
     },
     {
         "id": 3,
-        "name": "iPad Pro",
-        "description": "Unleash your creativity and productivity with the iPad Pro: powerful performance, stunning Liquid Retina display, and all-day battery life make the iPad Pro the perfect tool for work and play. Transform your ideas into reality with the iPad Pro.",
-        "price": 799,
+        "name": "DJI Neo Motion Fly  More Combo",
+        "description": "El DJI Neo es un dron compacto y ágil con cámara 4K, vuelo inteligente y gran estabilidad, ideal para capturar tomas aéreas impresionantes. La versión Motion Fly More Combo incluye tres baterías, control remoto Motion 3, hub de carga bidireccional, hélices de repuesto, protectores de hélices y estuche de transporte..",
+        "price": 2849900,
         "stock": 10,
-        "image": "https://www.apple.com/v/ipad-pro/a/images/meta/og__d8m6x7smkntm.png",
+        "image": "https://tiendadefotografia.com.co/wp-content/uploads/2024/12/DJI-Neo-Motion-Fly-More-Combo_x1.webp",
         "categoryId": 3
     },
     {
         "id": 4,
-        "name": "Apple Watch Series 6",
-        "description": "Stay connected and healthy with the Apple Watch Series 6: track your workouts, monitor your health, and stay in touch with the people and information you care about most. Experience the future of health and wellness with the Apple Watch Series 6.",
-        "price": 399,
+        "name": "DJI Mini 4K",
+        "description": "El DJI Mini 4K es un dron ultraligero y portátil con cámara 4K, estabilización precisa y modos de vuelo inteligentes, perfecto para creadores en movimiento. La versión sencilla incluye el dron, una batería, control remoto, hélices de repuesto, cable USB-C, protector del gimbal y herramientas de montaje esenciales.",
+        "price": 1599900,
         "stock": 10,
-        "image": "https://www.apple.com/v/apple-watch-series-6/a/images/meta/og__c1zv8c8n7q06.png",
+        "image": "https://dronerossantander.com/wp-content/uploads/2023/03/DJI-Mini-2-SE-2-scaled.jpg",
         "categoryId": 4
     },
     {
         "id": 5,
-        "name": "AirPods Pro",
-        "description": "Immerse yourself in sound with the AirPods Pro: active noise cancellation, transparency mode, and customizable fit make the AirPods Pro the perfect companion for music, calls, and everything in between. Elevate your audio experience with the AirPods Pro.",
-        "price": 249,
+        "name": "DJI Mini 4K Fly More Combo",
+        "description": "El DJI Mini 4K es un dron ultraligero y potente con cámara 4K, estabilización de tres ejes y funciones inteligentes para grabaciones fluidas y creativas. La versión Fly More Combo incluye tres baterías, hub de carga bidireccional, control remoto, hélices de repuesto, bolsa de transporte, cable USB-C y protectores del gimbal.",
+        "price": 2499900,
         "stock": 10,
-        "image": "https://www.apple.com/v/airpods-pro/a/images/meta/og__c1zv8c8n7q06.png",
+        "image": "https://tiendadefotografia.com.co/wp-content/uploads/2024/11/DJI-Mini-2-SE-Combo-2-scaled-1.jpg",
         "categoryId": 5
     },
     {
         "id": 6,
-        "name": "HomePod mini",
-        "description": "Elevate your home audio experience with the HomePod mini: immersive sound, intelligent assistant, and smart home hub make the HomePod mini the perfect addition to your home. Enjoy a world of music, news, and more with the HomePod mini.",
-        "price": 99,
+        "name": "DJI Mini 3",
+        "description": "El DJI Mini 3 es un dron ligero y versátil con cámara 4K HDR, vuelo estable y batería de larga duración, ideal para capturar vistas aéreas impresionantes. La versión sencilla con control RC-N1 incluye el dron, una batería, control remoto RC-N1, hélices de repuesto, cable USB-C y protector del gimbal.",
+        "price": 1999900,
         "stock": 10,
-        "image": "https://www.apple.com/v/homepod-mini/a/images/meta/og__d5k62k8b4qka.png",
+        "image": "https://tiendadefotografia.com.co/wp-content/uploads/2024/03/9a451bcb753bf10952c60233e7454e67@origin-1920x1920.jpg",
+        "categoryId": 6
+    },
+    {
+        "id": 7,
+        "name": "DJI Mini 3 (DJI RC)",
+        "description": "El DJI Mini 3 es un dron compacto y ligero con cámara 4K HDR, vuelo inteligente y gran autonomía, ideal para creadores y viajeros. La versión sencilla con control DJI RC incluye el dron, una batería, control remoto DJI RC con pantalla, hélices de repuesto, cable USB-C y protector del gimbal.",
+        "price": 2599900,
+        "stock": 10,
+        "image": "https://tiendadefotografia.com.co/wp-content/uploads/2024/03/9a451bcb753bf10952c60233e7454e67@origin-1920x1920.jpg",
+        "categoryId": 6
+    },
+    {
+        "id": 8,
+        "name": "DJI Mini 3 Fly More Combo (DJI RC-N1)",
+        "description": "El DJI Mini 3 es un dron ligero y potente con cámara 4K HDR, vuelo inteligente y excelente autonomía, ideal para capturar paisajes y momentos únicos. La versión Combo con control RC-N1 incluye el dron, tres baterías, control remoto RC-N1, hub de carga bidireccional, hélices de repuesto, cable USB-C y estuche de transporte.",
+        "price": 3149900,
+        "stock": 10,
+        "image": "https://djistore.com.pa/wp-content/uploads/2022/12/DJI_MINI3_10.webp",
         "categoryId": 6
     }
 ]
