@@ -10,7 +10,7 @@ export default function FeaturedProducts() {
   );
 
   return (
-  <div className=" py-10">
+  <div className=" py-10 bg-[#fff]">
     <h1 className="text-2xl font-semibold text-center mb-8">
       PRODUCTOS DESTACADOS
     </h1>

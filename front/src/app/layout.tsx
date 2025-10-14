@@ -15,11 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className="bg-red-100">
-          <h1> navbar</h1>
-        </div>
+      <body className="w-full min-h-screen">
+        <nav className="bg-[#f2f2f2] mt-0 flex items-center">
+          <img src="LogoAerotechStoreHorizontal.png" alt="logo horizontal" className="h-26 mx-auto mt-1 flex" />
+          <img src="/IconoUsuario.png" alt="icono usuario" className="h-18 " />
+          <img src="/IconoCarrito.png" alt="icono Carrito" className="h-18" />
+        </nav>
+
         {children}
+
         <div className="bg-red-100">
           <h1> footer</h1>
         </div>
