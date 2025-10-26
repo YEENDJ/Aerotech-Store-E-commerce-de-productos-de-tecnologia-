@@ -6,7 +6,7 @@ import { PATHROUTES } from '@/utils/PathRoutes';
 const NavBar = () => {
   return (
     
-        <nav  className="relative flex items-center justify-between px-6 py-3 bg-[#f2f2f2] flex-row-reverse">
+        <nav  className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse">
 
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link href={PATHROUTES.HOME}>
@@ -15,7 +15,7 @@ const NavBar = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Link href="">
+            <Link href={PATHROUTES.DASHBOARD}>
               <img src="/IconoUsuario.png" alt="icono usuario" className="h-18 " />
             </Link>
 

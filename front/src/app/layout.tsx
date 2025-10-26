@@ -2,6 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import {Inter, Orbitron,} from "next/font/google"
+
+
+
+
+export const primary = Inter({
+  variable: "--font-Inter",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"], 
+})
+
+export const secondary = Orbitron({
+  variable: "--font-Orbitron",
+  subsets: ["latin"],
+  weight: ["500", "700"],
+})
 
 
 
@@ -10,6 +26,7 @@ export const metadata: Metadata = {
   description: "Tecnologia a un solo click",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="w-full min-h-screen">
+      <body className={` ${primary.variable} ${secondary.variable} antialiased`}>
       <NavBar/>
         {children}
       <Footer/>
