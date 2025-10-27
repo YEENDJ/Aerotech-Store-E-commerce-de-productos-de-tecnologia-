@@ -11,7 +11,7 @@
   --color-Verde-Azulado: #00C2A8;
 
   --font-Inter: "Inter", sans-serif;
-  --font-Orbitron: "Orbitron", sans-serif;
+  --font-Poppins: "Poppins", sans-serif;
 
 }
 
@@ -56,5 +56,5 @@ body {
 }
 
 h1, h2, h3, .titulo {
-  font-family: var(--font-Orbitron);
+  font-family: var(--font-Poppins);
 }

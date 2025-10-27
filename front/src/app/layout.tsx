@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import {Inter, Orbitron,} from "next/font/google"
+import {Inter, Orbitron, Poppins,} from "next/font/google"
 
 
 
@@ -13,8 +13,8 @@ export const primary = Inter({
   weight: ["400", "600", "700"], 
 })
 
-export const secondary = Orbitron({
-  variable: "--font-Orbitron",
+export const secondary = Poppins({
+  variable: "--font-Poppins",
   subsets: ["latin"],
   weight: ["500", "700"],
 })

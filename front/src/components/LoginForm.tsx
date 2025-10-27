@@ -3,10 +3,9 @@
 
 import { PATHROUTES } from "@/utils/PathRoutes";
 import Link from "next/link";
-import { Formik, useFormik } from "formik";
-import { useState } from "react";
+import {useFormik } from "formik";
 import { initialValuesLogin, loginValidationSchema,LoginFormValuesInterface } from "@/validators/loginSchema";
-import { log } from "console";
+
 
 
 
@@ -35,7 +34,7 @@ const LoginForm = () => {
             </label>
             <input
               type="email"
-              className="w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+              className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
               placeholder="tucorreo@email.com"
               id="email"
               name="email"
@@ -43,7 +42,9 @@ const LoginForm = () => {
               onChange={formik.handleChange}
               required
             />
+            <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
             {formik.errors.email}
+            </div>
           </div>
 
           <div>
@@ -52,7 +53,7 @@ const LoginForm = () => {
             </label>
             <input
               type="password"
-              className="w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
+              className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
               placeholder="********"
               id="password"
               name="password"
@@ -60,21 +61,27 @@ const LoginForm = () => {
               onChange={formik.handleChange}
               required
             />
+            <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
             {formik.errors.password}
+            </div>
           </div>
 
           <button
             type="submit"
-            className=" cursor-pointer w-full bg-azulElectrico text-Blanco py-2 rounded-lg font-semibold hover:bg-Verde-Azulado transition-colors"
+             disabled={ formik.isSubmitting || !(formik.isValid && formik.dirty)}
+
+             className={`w-full bg-azulElectrico text-Blanco py-2 rounded-lg font-semibold ${
+          !( formik.isValid && formik.dirty && !formik.isSubmitting) ? "opacity-50 cursor-not-allowed " : " hover:bg-Verde-Azulado transition-colors cursor-pointer "
+        }`}
           >
-            Entrar
+            {formik.isSubmitting ? "Iniciando Sesion..." : "Entrar"}
           </button>
         </form>
 
         <p className="text-sm text-center mt-5 text-[#1A1A1A]">
-          ¿No tienes cuenta?{" "}
+          ¿No te has registrado?{" "}
           <Link href ={PATHROUTES.REGISTER}className="text-[#00C2A8] hover:underline">
-            Registrarse
+            Registrate
           </Link>
         </p>
       </div>
