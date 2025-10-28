@@ -1,21 +1,21 @@
 import * as Yup from "yup";
 
 export const initialValuesRegister: RegisterFormValuesInterface = {
-    nombre:"",
+    name:"",
     email: "",
     password: "",
-    confirmacionPassword:"",
-    direccion: "",
-    telefono: ""
+    confirmPassword:"",
+    address: "",
+    phone: ""
 }
 
 export interface RegisterFormValuesInterface {
-    nombre: string
+    name: string
     email: string
     password: string
-    confirmacionPassword:string
-    direccion: string
-    telefono: string
+    confirmPassword:string
+    address: string
+    phone: string
 }
 
 export const registerValidationSchema = Yup.object({
@@ -33,21 +33,23 @@ export const registerValidationSchema = Yup.object({
     .matches(/[0-9]/, "Debe contener al menos un número")
     .matches(/[@$!%*?&]/, "Debe contener al menos un carácter especial (@, $, !, %, *, ?, &)"),
 
-    confirmacionPassword: Yup.string()
+    confirmPassword: Yup.string()
     .required("Es necesario confirmar la contraseña")
     .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir"),
 
-    nombre: Yup.string()
-    .required("El nombre es un campo obligatorio")
-    .trim("No puede comenzar ni terminar con espacios"),
 
-    direccion: Yup.string()
+    name: Yup.string()
+    .required("El nombre es un campo obligatorio")
+    .trim("No puede comenzar ni terminar con espacios")
+    .min(8,"Debe contener al menos 8 caracteres"),
+
+    address: Yup.string()
     .required("La direccion es un campo obligatorio")
     .min(5, "Debe tener al menos 5 caracteres")
     .trim("No puede comenzar ni terminar con espacios")
     .max(100, "Debe tener como máximo 100 caracteres"),
 
-    telefono: Yup.string()
+    phone: Yup.string()
     .required("El numero de telefono es un campo obligatorio")
     .matches(/^[0-9]+$/, "Solo se permiten números")
     .min(10, "Debe tener al menos 10 dígitos")

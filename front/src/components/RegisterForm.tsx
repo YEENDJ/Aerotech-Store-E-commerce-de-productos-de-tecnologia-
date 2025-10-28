@@ -21,7 +21,7 @@ const RegisterForm = () => {
     });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-GrisClaro">
+    <div className="min-h-screen flex items-center justify-center bg-GrisClaro mt">
       <div className="bg-Blanco p-8 rounded-2xl shadow-xl w-full max-w-sm border border-Blanco">
         <h2 className="text-2xl font-bold text-center mb-6 text-NegroCarbon">
           Registrate
@@ -36,14 +36,14 @@ const RegisterForm = () => {
               type="text"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
               placeholder="Nombres y Apellidos"
-              id="nombre"
-              name="nombre"
-              value={formik.values.nombre}
+              id="name"
+              name="name"
+              value={formik.values.name}
               onChange={formik.handleChange}
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.nombre}
+            {formik.errors.name}
             </div>
           </div>
 
@@ -93,14 +93,14 @@ const RegisterForm = () => {
               type="password"
               className=" placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
               placeholder="********"
-              id="confirmacionPassword"
-              name="confirmacionPassword"
-              value={formik.values.confirmacionPassword}
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.confirmacionPassword}
+            {formik.errors.confirmPassword}
             </div>
           </div>
 
@@ -112,14 +112,14 @@ const RegisterForm = () => {
               type="text"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
               placeholder="Ejemplo: Calle 10 #23-45 barrio san jose villavicencio-META"
-              id="direccion"
-              name="direccion"
-              value={formik.values.direccion}
+              id="address"
+              name="address"
+              value={formik.values.address}
               onChange={formik.handleChange}
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.direccion}
+            {formik.errors.address}
             </div>
           </div>
 
@@ -131,14 +131,14 @@ const RegisterForm = () => {
               type="tel"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
               placeholder="Ejemplo 3106790518"
-              id="telefono"
-              name="telefono"
-              value={formik.values.telefono}
+              id="phone"
+              name="phone"
+              value={formik.values.phone}
               onChange={formik.handleChange}
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.telefono}
+            {formik.errors.phone}
             </div>
           </div>
 
