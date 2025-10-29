@@ -1,4 +1,7 @@
 
+import { IProducts } from '@/interfaces/Iproducts';
+import { getAllProductByIdService } from '@/Services/products.services';
+import { notFound } from 'next/navigation';
 import React from 'react'
 
 interface ProductDetailProps{
@@ -7,9 +10,17 @@ interface ProductDetailProps{
   }
 }
 
-const ProductDetailPage = ({params}: ProductDetailProps) => {
-
+const ProductDetailPage = async ({params}: ProductDetailProps) => {
   const {idProduct} = params;
+
+  let productDataid : IProducts;
+
+
+  try {
+    productDataid = await getAllProductByIdService (idProduct)
+  } catch (error) {
+    notFound()
+  }
   return (
     <div>este es mi products {idProduct}</div>
   )

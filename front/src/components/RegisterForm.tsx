@@ -23,7 +23,7 @@ const RegisterForm = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-GrisClaro mt">
       <div className="bg-Blanco p-8 rounded-2xl shadow-xl w-full max-w-sm border border-Blanco">
-        <h2 className="text-2xl font-bold text-center mb-6 text-NegroCarbon">
+        <h2 className="text-2xl font- text-center mb-6 text-NegroCarbon">
           Registrate
         </h2>
 
