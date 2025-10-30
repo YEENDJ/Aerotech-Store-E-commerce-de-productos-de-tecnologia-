@@ -1,4 +1,5 @@
 
+import ProductDetailCard from '@/components/ProductDetailCard';
 import { IProducts } from '@/interfaces/Iproducts';
 import { getAllProductByIdService } from '@/Services/products.services';
 import { notFound } from 'next/navigation';
@@ -22,7 +23,10 @@ const ProductDetailPage = async ({params}: ProductDetailProps) => {
     notFound()
   }
   return (
-    <div>este es mi products {idProduct}</div>
+    <div>este es mi products {idProduct}
+    <ProductDetailCard product={productDataid} />
+    </div>
+    
   )
 }
 

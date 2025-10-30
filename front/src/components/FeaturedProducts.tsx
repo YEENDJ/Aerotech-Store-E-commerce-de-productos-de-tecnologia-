@@ -1,32 +1,48 @@
+import React from "react";
+import ProductCard from "@/components/ProductCard";
 import { IProducts } from "@/interfaces/Iproducts";
-import { ListProducts } from "@/mocks/ListProducts";
-import ProductCard from "./ProductCard";
+import { getAllProductByIdService } from "@/Services/products.services";
 
-export default function FeaturedProducts() {
-  const featuredIds = [1, 3, 5];
+interface FeaturedProductsProps {
+  featuredIds: string[]; // los IDs de los productos destacados
+}
 
-  const featuredProducts = ListProducts.filter((p) =>
-    featuredIds.includes(p.id)
-  );
+const FeaturedProducts = async ({ featuredIds }: FeaturedProductsProps) => {
+  // obtenemos los productos por ID
+  const featuredProducts: IProducts[] = [];
+
+  for (const id of featuredIds) {
+    try {
+      const product = await getAllProductByIdService(id);
+      featuredProducts.push(product);
+    } catch (error) {
+      console.error(`Error cargando producto destacado con ID: ${id}`, error);
+    }
+  }
 
   return (
-  <div className=" py-10 bg-[#fff]">
-    <h1 className="text-4xl font-Roboto text-center mb-8">
-      PRODUCTOS DESTACADOS
-    </h1>
+    <div className="min-h-[60vh] bg-[#F8F9FA] py-10 w-full overflow-y-auto flex flex-col items-center">
+      <h1 className="text-3xl font-semibold text-[#1A1A1A] mb-8 text-center">
+        Productos Destacados
+      </h1>
 
-    <div className="flex justify-center gap-10">
-      {featuredProducts.map((product: IProducts) => (
-        <ProductCard
-          key={product.id}
-          name={product.name}
-          img={product.image}
-          price={product.price}
-        />
-      ))}
-    </div> 
-  </div>
-);
+      <div
+        className="
+          flex
+          flex-wrap
+          justify-center
+          gap-8
+          w-full
+          max-w-[1300px]
+          px-6
+        "
+      >
+        {featuredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-
-}
+export default FeaturedProducts;

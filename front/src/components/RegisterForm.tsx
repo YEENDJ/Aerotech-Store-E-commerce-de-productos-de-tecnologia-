@@ -29,12 +29,12 @@ const RegisterForm = () => {
 
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Nombre
             </label>
             <input
               type="text"
-              className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+              className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-NegroCarbon focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
               placeholder="Nombres y Apellidos"
               id="name"
               name="name"
@@ -48,12 +48,12 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Correo Electrónico
             </label>
             <input
               type="email"
-              className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+              className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-NegroCarbon focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
               placeholder="tucorreo@email.com"
               id="email"
               name="email"
@@ -67,7 +67,7 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Contraseña
             </label>
             <input
@@ -86,7 +86,7 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Confirmacion Contraseña
             </label>
             <input
@@ -105,7 +105,7 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Direccion
             </label>
             <input
@@ -124,7 +124,7 @@ const RegisterForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1A1A1A] mb-1">
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Telefono
             </label>
             <input
@@ -155,7 +155,7 @@ const RegisterForm = () => {
           </button>
         </form>
 
-        <p className="text-sm text-center mt-5 text-[#1A1A1A]">
+        <p className="text-sm text-center mt-5 text-NegroCarbon">
           ¿Ya tienes una cuenta?{" "}
           <Link href ={PATHROUTES.LOGIN}className="text-[#00C2A8] hover:underline">
             Inicia Sesion

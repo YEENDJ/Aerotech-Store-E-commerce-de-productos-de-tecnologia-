@@ -1,26 +1,18 @@
-import ProductCard from "@/components/ProductCard";
-import { IProducts } from "@/interfaces/Iproducts";
-import { ListProducts } from "@/mocks/ListProducts";
+import { getAllProductsService } from "@/Services/products.services";
+import ProductsList from "@/components/ProductsList";
 
+const Home = async () => {
+  // Obtenemos todos los productos
+  const allProducts = await getAllProductsService();
 
-export default function products  () {
- return (
-    <div>
-      <div className="flex flex-wrap justify-around content-around items-start mt-5 p-5 gap-y-6 bg-[#FFFFFF]">
-        {
-          ListProducts.map((Product: IProducts) => {
-            return (
-              <ProductCard 
-                name={Product.name}
-                price={Product.price}
-                img={Product.image}
-                key={Product.id}
-              />
-            );
-          })
-        }
-      </div>
+  // Validación por si la respuesta viene vacía o incorrecta
+  const products = Array.isArray(allProducts) ? allProducts : [];
+
+  return (
+    <div className="flex justify-center bg-[#FFFFFF]">
+      <ProductsList products={products} />
     </div>
   );
-}
+};
 
+export default Home;
