@@ -21,13 +21,14 @@ const FeaturedProducts = async ({ featuredIds }: FeaturedProductsProps) => {
   }
 
   return (
-    <div className="min-h-[60vh] bg-[#F8F9FA] py-10 w-full overflow-y-auto flex flex-col items-center">
+    <div className="min-h-[60vh] bg-[#F8F9FA] py-10 w-full overflow-y-auto flex flex-col items-center ">
       <h1 className="text-3xl font-semibold text-[#1A1A1A] mb-8 text-center">
         Productos Destacados
       </h1>
 
       <div
         className="
+        
           flex
           flex-wrap
           justify-center

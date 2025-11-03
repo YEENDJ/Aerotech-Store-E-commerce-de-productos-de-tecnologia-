@@ -34,7 +34,7 @@ interface CardProps {
 const ProductCard = ({ product }: CardProps) => {
   return (
     <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
-      <div className="flex flex-col w-64 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4">
+      <div className="flex flex-col w-64 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
         <img
           src={product.image}
           alt={product.name}

@@ -23,7 +23,7 @@ const ProductDetailPage = async ({params}: ProductDetailProps) => {
     notFound()
   }
   return (
-    <div>este es mi products {idProduct}
+    <div>
     <ProductDetailCard product={productDataid} />
     </div>
     

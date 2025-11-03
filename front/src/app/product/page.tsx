@@ -9,7 +9,7 @@ const Home = async () => {
   const products = Array.isArray(allProducts) ? allProducts : [];
 
   return (
-    <div className="flex justify-center bg-[#FFFFFF]">
+    <div className="flex justify-center  bg-[#FFFFFF] ">
       <ProductsList products={products} />
     </div>
   );

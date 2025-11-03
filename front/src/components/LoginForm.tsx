@@ -5,11 +5,19 @@ import { PATHROUTES } from "@/utils/PathRoutes";
 import Link from "next/link";
 import {useFormik } from "formik";
 import { initialValuesLogin, loginValidationSchema,LoginFormValuesInterface } from "@/validators/loginSchema";
+import { useRouter } from "next/navigation";
+import swal from "sweetalert";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 
 
 
 const LoginForm = () => {
+
+   const router = useRouter();
+   const [showPassword, setShowPassword] = useState(false);
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const formik = useFormik <LoginFormValuesInterface>({
     initialValues : initialValuesLogin,
@@ -51,16 +59,25 @@ const LoginForm = () => {
             <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Contraseña
             </label>
-            <input
-              type="password"
-              className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
-              placeholder="********"
-              id="password"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
+                placeholder="********"
+                id="password"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                required
+                />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
             {formik.errors.password}
             </div>
@@ -70,7 +87,7 @@ const LoginForm = () => {
             type="submit"
              disabled={ formik.isSubmitting || !(formik.isValid && formik.dirty)}
 
-             className={`w-full bg-azulElectrico text-Blanco py-2 rounded-lg font-semibold ${
+             className={`w-full bg-azulElectrico text- py-2 rounded-lg font-semibold ${
           !( formik.isValid && formik.dirty && !formik.isSubmitting) ? "opacity-50 cursor-not-allowed " : " hover:bg-Verde-Azulado transition-colors cursor-pointer "
         }`}
           >

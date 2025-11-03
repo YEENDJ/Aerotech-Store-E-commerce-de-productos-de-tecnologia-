@@ -2,7 +2,7 @@ import { IProducts } from "@/interfaces/Iproducts";
 
 export const getAllProductsService = async () => {
     try {
-        const res = await fetch("http://localhost:3001/products", {
+        const res = await fetch("http://localhost:3005/products", {
             method: "GET",
         });
         const products : IProducts[] = await res.json()

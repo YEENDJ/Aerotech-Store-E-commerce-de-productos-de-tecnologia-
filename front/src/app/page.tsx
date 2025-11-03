@@ -11,12 +11,9 @@ import { getAllProductsService } from "@/Services/products.services";
   
   return (
     <div className="flex flex-wrap justify-around content-around items-start mt-5 p-5 gap-y-6 bg-[#FFFFFF]">
-      <section className="flex justify-center gap-10">
-
-          return <FeaturedProducts featuredIds={["1", "2", "3"]} />
-        
-     
-      </section> 
+      {/* <section className="flex justify-center gap-10 w-full"> */}
+        <FeaturedProducts featuredIds={["1", "2", "3"]} />
+      {/* </section>  */}
     </div>
 );
 

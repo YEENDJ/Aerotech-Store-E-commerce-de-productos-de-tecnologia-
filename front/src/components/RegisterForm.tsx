@@ -5,18 +5,37 @@ import { PATHROUTES } from "@/utils/PathRoutes";
 import Link from "next/link";
 import { useFormik } from "formik";
 import { initialValuesRegister,RegisterFormValuesInterface,registerValidationSchema } from "@/validators/registerSchema"; 
+import { registerUserService } from "@/Services/auth.Services";
+import { useRouter } from "next/navigation";
+import swal from "sweetalert";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 
 
 
 const RegisterForm = () => {
+  
+   const navigate = useRouter();
+   const [showPassword, setShowPassword] = useState(false);
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const formik = useFormik <RegisterFormValuesInterface>({
     initialValues : initialValuesRegister,
     validationSchema:registerValidationSchema,
-     onSubmit:() => {
-      console.log("Submit exitoso");
-      
+
+     onSubmit: async (values, { resetForm }) => {
+
+      try {
+        const res = await registerUserService(values);
+         swal("¡Listo!", "Usuario registrado con éxito", "success");
+         resetForm(); 
+         navigate.push(PATHROUTES.LOGIN)
+        
+      } catch (error) {
+       swal("Error", "Hubo un error al registrar el usuario", "error");
+       resetForm(); 
+      }
      }
     });
 
@@ -70,16 +89,26 @@ const RegisterForm = () => {
             <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Contraseña
             </label>
-            <input
-              type="password"
-              className=" placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
-              placeholder="********"
-              id="password"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              required
-            />
+            <div className="relative">
+
+                <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                placeholder="********"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                className="placeholder:text-[14px] w-full px-4 py-2 pr-10 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
+                required
+                />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
             {formik.errors.password}
             </div>
@@ -89,16 +118,25 @@ const RegisterForm = () => {
             <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Confirmacion Contraseña
             </label>
-            <input
-              type="password"
-              className=" placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
-              placeholder="********"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formik.values.confirmPassword}
-              onChange={formik.handleChange}
-              required
-            />
+             <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="********"
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
+                className="placeholder:text-[14px] w-full px-4 py-2 pr-10 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+              >
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
             {formik.errors.confirmPassword}
             </div>
@@ -130,7 +168,7 @@ const RegisterForm = () => {
             <input
               type="tel"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
-              placeholder="Ejemplo 3106790518"
+              placeholder="Ejemplo 3111111111"
               id="phone"
               name="phone"
               value={formik.values.phone}
