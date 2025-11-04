@@ -27,7 +27,10 @@ const RegisterForm = () => {
      onSubmit: async (values, { resetForm }) => {
 
       try {
-        const res = await registerUserService(values);
+
+         const valuesLower = { ...values, email: values.email.toLowerCase() };
+         const res = await registerUserService(valuesLower);
+         
          swal("¡Listo!", "Usuario registrado con éxito", "success");
          resetForm(); 
          navigate.push(PATHROUTES.LOGIN)

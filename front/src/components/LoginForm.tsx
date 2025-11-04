@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import swal from "sweetalert";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { loginUserService } from "@/Services/auth.Services";
 
 
 
@@ -17,16 +18,40 @@ const LoginForm = () => {
 
    const router = useRouter();
    const [showPassword, setShowPassword] = useState(false);
-   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const formik = useFormik <LoginFormValuesInterface>({
     initialValues : initialValuesLogin,
     validationSchema:loginValidationSchema,
-     onSubmit:() => {
-      console.log("Submit exitoso");
+    onSubmit: async (values, { resetForm }) => {
       
-     }
-    });
+
+      try {
+
+        const valuesLower = { ...values, email: values.email.toLowerCase() };
+        const res = await loginUserService(valuesLower);
+
+        if (!res.ok) {
+          const msg = res.data?.message?.toLowerCase() || "";
+
+          if (msg.includes("user") || msg.includes("no existe")) {
+            swal("Correo no registrado", "Verifica tu correo o regístrate", "warning");
+          } else if (msg.includes("password") || msg.includes("contraseña")) {
+            swal("Contraseña incorrecta", "Vuelve a intentarlo", "error");
+          } else {
+            swal("Error", "Hubo un problema al iniciar sesión", "error");
+          }
+          return;
+        }
+        swal("¡Listo!", "Inicio de Sesión exitoso", "success");
+        resetForm();
+        // router.push("/home"); 
+
+      } catch (error: any) {
+        swal("Error", "No se pudo conectar con el servidor", "error");
+        resetForm();
+      }
+    }
+  });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-GrisClaro">
