@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import {Inter, Orbitron, Poppins,} from "next/font/google"
+import { AuthProvider } from "@/contexts/AuthContext";
 
 
 
@@ -35,9 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${primary.variable} ${secondary.variable} antialiased`}>
-      <NavBar/>
-        {children}
-      <Footer/>
+        <AuthProvider>
+          <>
+            <NavBar/>
+              {children}
+            <Footer/>
+          </>
+        </AuthProvider>
       </body>
     </html>
   );

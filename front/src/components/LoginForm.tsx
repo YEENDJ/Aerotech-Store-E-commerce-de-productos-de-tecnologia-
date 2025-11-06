@@ -10,12 +10,14 @@ import swal from "sweetalert";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { loginUserService } from "@/Services/auth.Services";
+import { useAuth } from "@/contexts/AuthContext";
 
 
 
 
 const LoginForm = () => {
 
+   const {setDataUser} = useAuth()
    const router = useRouter();
    const [showPassword, setShowPassword] = useState(false);
 
@@ -23,12 +25,13 @@ const LoginForm = () => {
     initialValues : initialValuesLogin,
     validationSchema:loginValidationSchema,
     onSubmit: async (values, { resetForm }) => {
-      
+    // setDataUser(res) 
 
       try {
 
         const valuesLower = { ...values, email: values.email.toLowerCase() };
         const res = await loginUserService(valuesLower);
+        
 
         if (!res.ok) {
           const msg = res.data?.message?.toLowerCase() || "";
@@ -42,9 +45,11 @@ const LoginForm = () => {
           }
           return;
         }
+
+        setDataUser(res.data);
         swal("¡Listo!", "Inicio de Sesión exitoso", "success");
         resetForm();
-        // router.push("/home"); 
+        router.push("/"); 
 
       } catch (error: any) {
         swal("Error", "No se pudo conectar con el servidor", "error");
