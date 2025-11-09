@@ -67,6 +67,7 @@
 "use client";
 import React, { useState } from "react";
 import { IProducts } from "@/interfaces/Iproducts";
+import ButtonAddToCart from "@/components/ButtonAddToCart";
 
 interface ProductDetailCardProps {
   product: IProducts;
@@ -127,12 +128,7 @@ const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
         </div>
 
         <div className="flex flex-col gap-3">
-          <button className="w-full bg-[#007BFF] text-white py-3 rounded-xl font-semibold hover:bg-[#0056cc] transition">
-            Comprar ahora
-          </button>
-          <button className="w-full border border-[#007BFF] text-[#007BFF] py-3 rounded-xl font-semibold hover:bg-[#E5E5E5] transition">
-            Agregar al carrito
-          </button>
+          <ButtonAddToCart product ={product} />
         </div>
 
         <div className="mt-6 text-sm text-gray-600">

@@ -4,15 +4,17 @@ import { IProducts } from '@/interfaces/Iproducts';
 import { getAllProductByIdService } from '@/Services/products.services';
 import { notFound } from 'next/navigation';
 import React from 'react'
+import swal from 'sweetalert';
+
 
 interface ProductDetailProps{
-  params: {
+  params: Promise<{
     idProduct : string;
-  }
+  }>
 }
 
 const ProductDetailPage = async ({params}: ProductDetailProps) => {
-  const {idProduct} = params;
+  const {idProduct} = await params;
 
   let productDataid : IProducts;
 

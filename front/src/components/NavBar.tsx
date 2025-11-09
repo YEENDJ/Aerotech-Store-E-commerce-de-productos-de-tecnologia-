@@ -57,22 +57,23 @@ const NavBar = () => {
   return (
     <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse">
       
-      <div>
+      {/* <div>
         {
           dataUser && 
         <> 
         <p> {dataUser.user.name} </p>
         <p> {dataUser.user.phone} </p>
+        <p> {dataUser.user.email}</p>
         </>
         }
       </div>
 
-      <div className="flex items-center space-x-4 relative">
+      <div className="flex justify-end space-x-4 relative">
         <button onClick={logout} className="bg-red-500 flex  hover:bg-red-600 text-white px-4 py-2 rounded-lg transition items-end">
         cerrar sesion
         </button>
         
-      </div>
+      </div> */}
       
       {/* Logo centrado */}
       <div className="absolute left-1/2 transform -translate-x-1/2">

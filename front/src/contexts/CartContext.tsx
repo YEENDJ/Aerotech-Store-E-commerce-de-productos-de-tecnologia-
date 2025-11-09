@@ -1,12 +1,14 @@
 "use client"
-import { cartItem } from "@/interfaces/ICart";
 import { IProducts } from "@/interfaces/Iproducts";
-import { Children, createContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useAuth } from "./AuthContext";
+import swal from 'sweetalert';
 
 
+const CARTLOCALSTORAGE = "cart"
 
 interface CartContextProps {
-    cartItem : IProducts[];
+    cartItems : IProducts[];
     addToCart : (product : IProducts) => void;
     removeFromCart : (productId: number) => void;
     clearCart:  () => void;
@@ -18,7 +20,7 @@ interface CartContextProps {
 
 const CartContext =createContext<CartContextProps> ({
     
-    cartItem : [],
+    cartItems : [],
     addToCart : () => {},
     removeFromCart : () =>{},
     clearCart:  () => {},
@@ -29,11 +31,89 @@ const CartContext =createContext<CartContextProps> ({
 
 
 
-interface CartProvider {
+interface CartProviderProps {
     children: React.ReactElement;
 }
 
 
-const CratProvider: React.FC<CartProvider> = {(children)} => {
+export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
 
-}X
+    const {dataUser} =useAuth ();
+    const [cartItems, setCarItem] = useState<IProducts[]> ([]);
+
+    useEffect(()=> {
+        if(cartItems.length > 0){
+            localStorage.setItem(CARTLOCALSTORAGE, JSON.stringify(cartItems))
+        }
+    }, [cartItems])
+
+    useEffect (()=>{
+        if (typeof window !== "undefined" && window.localStorage) {
+            const cartInfo = localStorage.getItem(CARTLOCALSTORAGE);
+            if (cartInfo){
+                setCarItem(JSON.parse(cartInfo))
+            }
+        }
+    }, []);
+
+    const addToCart = (product : IProducts) => {
+        if (!dataUser){
+            swal("Ooops", "Debes estar logueado para añadir 1 producto al carro de compras", "warning");
+            return;
+        }
+
+        const ExistingProduct : boolean = cartItems.some(
+            (item) => item.id === product.id
+        );
+        if (ExistingProduct){
+            swal("Ooops", "Solo es permitido seleccionar 1 unidad por usuario", "warning");
+            return
+        }
+        setCarItem((prevItems)=> [...prevItems, product])
+
+    }
+
+
+    const removeFromCart =(productId: number) => {
+        setCarItem((prevItems)=> 
+        prevItems.filter((item) => item.id !== productId))
+    };
+
+    const clearCart = () => {
+        setCarItem([])
+        if (typeof window !== "undefined" && window.localStorage) {
+            localStorage.removeItem(CARTLOCALSTORAGE)
+        }; 
+    }
+
+    const getTotal = () => {
+        return cartItems.reduce((total , item) => total + item.price, 0);
+    };
+
+    const getIdItems= () => {
+        return cartItems.map((item) => item.id)
+    }
+
+    const getItemsCount = ()=> {
+        return cartItems.length
+    }
+
+    return(
+    <CartContext.Provider
+     value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        getTotal,
+        getIdItems,
+        getItemsCount
+        }}
+    > 
+        {children}
+    </CartContext.Provider>
+    );
+};
+
+
+export const useCart = () => useContext(CartContext)

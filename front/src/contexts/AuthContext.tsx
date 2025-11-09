@@ -3,6 +3,7 @@
 import { userSessionInterface } from "@/interfaces/Iuser";
 import { createContext, useContext, useEffect, useState } from "react";
 
+const USERSESSIONLOCALSTORAGE = "userSession"
 
 interface AuthContextProps {
     dataUser : userSessionInterface | null;
@@ -28,13 +29,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     useEffect(()=> {
         if (dataUser){
-            localStorage.setItem("userSession", JSON.stringify(dataUser));
+            localStorage.setItem(USERSESSIONLOCALSTORAGE, JSON.stringify(dataUser));
         }
     }, [dataUser]);
 
     useEffect (()=>{
         if (typeof window !== "undefined" && window.localStorage) {
-            const userInfo = localStorage.getItem("userSession");
+            const userInfo = localStorage.getItem(USERSESSIONLOCALSTORAGE);
             if (userInfo){
                 setDataUser(JSON.parse(userInfo))
             }
@@ -44,7 +45,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const logout =() => {
         setDataUser(null);
          if (typeof window !== "undefined" && window.localStorage) {
-        localStorage.removeItem("userSession");
+        localStorage.removeItem(USERSESSIONLOCALSTORAGE);
          }
     };
 

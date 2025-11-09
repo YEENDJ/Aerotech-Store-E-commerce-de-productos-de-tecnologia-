@@ -27,14 +27,14 @@
 import { IProducts } from "@/interfaces/Iproducts";
 import Link from "next/link";
 
+
 interface CardProps {
   product: IProducts;
 }
 
 const ProductCard = ({ product }: CardProps) => {
   return (
-    <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
-      <div className="flex flex-col w-64 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
+    <div className="flex flex-col w-64 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
         <img
           src={product.image}
           alt={product.name}
@@ -50,12 +50,15 @@ const ProductCard = ({ product }: CardProps) => {
           {product.description}
         </p>
 
-        <button className="w-full bg-[#007BFF] text-white px-3 py-2 rounded-lg hover:bg-[#0056cc] transition mt-4 text-sm">
-          Agregar al carrito
+    <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
+        <button className="cursor-pointer w-full bg-[#007BFF] text-white px-3 py-2 rounded-lg hover:bg-[#0056cc] transition mt-4 text-sm"
+        >
+          Ver Mas
         </button>
+    </Link>
+  
       </div>
 
-    </Link>
   );
 };
 
