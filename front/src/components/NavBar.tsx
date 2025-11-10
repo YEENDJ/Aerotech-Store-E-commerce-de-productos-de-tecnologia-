@@ -93,7 +93,7 @@ const NavBar = () => {
           <img
             src="/IconoUsuario.png"
             alt="icono usuario"
-            className="h-18 hover:opacity-80 transition"
+            className="cursor-pointer h-18 hover:opacity-80 transition"
             />
         </button>
 
@@ -102,14 +102,14 @@ const NavBar = () => {
           <div className="absolute top-10 right-0 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
             <Link
               href={PATHROUTES.LOGIN}
-              className="py-2 hover:bg-blue-50 text-gray-800 rounded-t-2xl transition"
+              className="bg-azulElectrico hover:bg-Verde-Azulado text-white font-semibold py-2 px-4 rounded-t-2xl transition-colors duration-300"
             >
               Iniciar sesión
             </Link>
             <div className="h-px bg-gray-200" />
             <Link
               href={PATHROUTES.REGISTER}
-              className="py-2 hover:bg-blue-50 text-gray-800 rounded-b-2xl transition"
+              className="bg-azulElectrico hover:bg-Verde-Azulado text-white font-semibold py-2 px-4 rounded-b-2xl transition-colors duration-300"
             >
               Registrarse
             </Link>

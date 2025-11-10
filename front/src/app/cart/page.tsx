@@ -9,17 +9,18 @@ export default function CartPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 ">
-      {/* Header */}
-      <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+     
+      
+
+      
+        <div className="bg-[#F8F9FA] shadow-sm px-6 py-4 flex items-center justify-between rounded-lg w-f">
           <Link href="/" className="text-gray-600 hover:text-black flex items-center gap-1">
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="flex justify-start w-5 h-5" />
             <span>Seguir comprando</span>
           </Link>
         </div>
-        <h1 className="text-xl font-semibold text-gray-800">Tu carrito de compras</h1>
-        <div className="w-8" /> {/* Espaciador visual */}
-      </div>
+        <h1 className="text-xl font-semibold text-gray-800 text-center flex-1 justify-center">Tu carrito de compras</h1>
+        <div className="w-8" /> 
 
       {/* Contenido */}
       <div className=" mx-auto p-6  gap-6 flex justify-center w-full  ">
@@ -43,23 +44,31 @@ export default function CartPage() {
                   className="flex items-center justify-between border-b border-gray-200 py-4"
                 >
                   {/* Imagen del producto */}
+                  
                   <div className="flex items-center gap-4">
-                    <img
-                      src={item.image || "/placeholder.png"}
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded-lg border"
-                    />
+                    <Link href={`/product/${item.id}`}>
+                    <div className="w-24 h-16 flex-shrink-0">
+                      <img
+                        src={item.image || "/placeholder.png"}
+                        alt={item.name}
+                        className="w-19 h-16 object-cover rounded-lg border"
+                        />
+                    </div>
+                    </Link>
+
                     <div>
                       <h3 className="font-medium text-gray-800">{item.name}</h3>
-                      <p className="text-gray-500 text-sm">${item.price.toFixed(2)}</p>
+                      <p className="text-azulElectrico text-sm">${item.price.toLocaleString("es-CO")}</p>
+                      <p className="text-gray-500 text-sm">{item.description}</p>
                     </div>
+                     
                   </div>
 
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="text-red-500 hover:text-red-600 transition"
                   >
-                    <Trash2 className="w-5 h-5" />
+                    <Trash2 className="cursor-pointer w-5 h-5" />
                   </button>
                 </div>
               ))}
@@ -69,17 +78,16 @@ export default function CartPage() {
 
         {/* Resumen de compra */}
         {cartItems.length > 0 && (
-          <div className="bg-white rounded-xl shadow p-6 h-fit">
+          <div className="bg-white rounded-xl shadow p-6 h-fit w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <h2 className="text-lg font-semibold mb-4">Resumen de compra</h2>
 
             <div className="flex justify-between text-gray-700 mb-2">
               <span>Productos ({cartItems.length})</span>
-              <span>${getTotal().toFixed(2)}</span>
             </div>
 
             <div className="flex justify-between text-lg font-semibold border-t border-gray-200 pt-3">
               <span>Total</span>
-              <span className="text-azulElectrico">${getTotal().toFixed(2)}</span>
+              <span className="text-azulElectrico">${getTotal().toLocaleString("es-CO")}</span>
             </div>
 
             <div className="mt-6 space-y-3">
@@ -87,7 +95,7 @@ export default function CartPage() {
                 onClick={() => alert("Redirigir a pago 🏦")}
                 className=" cursor-pointer w-full bg-Verde-Azulado hover:bg-azulElectrico text-black font-semibold py-2 rounded-lg transition"
               >
-                Continuar con la compra
+                Finalizar compra
               </button>
 
               <button
@@ -103,3 +111,5 @@ export default function CartPage() {
     </main>
   );
 }
+
+

@@ -34,20 +34,17 @@ interface CardProps {
 
 const ProductCard = ({ product }: CardProps) => {
   return (
-    <div className="flex flex-col w-64 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
+    <div className="flex flex-col w-72 h-96 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
         <img
           src={product.image}
           alt={product.name}
-          className="w-full object-contain mb-3 rounded-md"  
+          className="w-full h-52 object-contain mb-3 rounded-md"  
           />
         <p className="text-NegroCarbon font-semibold text-center line-clamp-1">
           {product.name}
         </p>
         <p className="text-[#007BFF] font-bold text-lg mt-1">
           ${product.price.toLocaleString()}
-        </p>
-        <p className="text-sm text-gray-500 text-center line-clamp-2">
-          {product.description}
         </p>
 
     <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">

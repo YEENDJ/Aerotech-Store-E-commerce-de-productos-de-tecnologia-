@@ -120,7 +120,7 @@ const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
             {product.name}
           </h1>
           <p className="text-3xl font-bold text-[#007BFF] mb-4">
-            ${product.price.toLocaleString()}
+            ${product.price.toLocaleString('es-CO')}
           </p>
           <p className="text-gray-700 leading-relaxed mb-6">
             {product.description}
