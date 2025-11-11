@@ -3,25 +3,27 @@ import { IProducts } from "@/interfaces/Iproducts";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 import swal from 'sweetalert';
+import Swal from "sweetalert2";
 
 
 const CARTLOCALSTORAGE = "cart"
 
 interface CartContextProps {
     cartItems : IProducts[];
-    addToCart : (product : IProducts) => void;
+    addToCart: (product: IProducts) => void;
     removeFromCart : (productId: number) => void;
     clearCart:  () => void;
     getTotal: () => number;
     getIdItems: ()=> number[];
     getItemsCount: ()=> number;
+    
 
 }
 
 const CartContext =createContext<CartContextProps> ({
     
     cartItems : [],
-    addToCart : () => {},
+    addToCart : () =>{},
     removeFromCart : () =>{},
     clearCart:  () => {},
     getTotal: () => 0,
@@ -56,6 +58,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
         }
     }, []);
 
+
     const addToCart = (product : IProducts) => {
         if (!dataUser){
             swal("Ooops", "Debes estar logueado para añadir 1 producto al carro de compras", "warning");
@@ -67,12 +70,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
         );
         if (ExistingProduct){
             swal("Ooops", "Solo es permitido seleccionar 1 unidad por usuario", "warning");
-            return
+            return 
+        }
+        else {
+            Swal.fire({
+                title: "¡Agregado!",
+                text: "El producto fue agregado al carrito correctamente.",
+                icon: "success",
+                timer: 2000, 
+                showConfirmButton: false, 
+              })
         }
         setCarItem((prevItems)=> [...prevItems, product])
 
     }
-
 
     const removeFromCart =(productId: number) => {
         setCarItem((prevItems)=> 
@@ -107,7 +118,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
         clearCart,
         getTotal,
         getIdItems,
-        getItemsCount
+        getItemsCount,
         }}
     > 
         {children}

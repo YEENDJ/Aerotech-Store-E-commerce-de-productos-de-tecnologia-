@@ -4,34 +4,33 @@ import { useCart } from "@/contexts/CartContext";
 import { Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default function CartPage() {
+ const CartPage = () => {
   const { cartItems, getTotal, removeFromCart, clearCart } = useCart();
 
   return (
     <main className="min-h-screen bg-gray-50 ">
-     
-      
 
-      
         <div className="bg-[#F8F9FA] shadow-sm px-6 py-4 flex items-center justify-between rounded-lg w-f">
           <Link href="/" className="text-gray-600 hover:text-black flex items-center gap-1">
             <ArrowLeft className="flex justify-start w-5 h-5" />
             <span>Seguir comprando</span>
           </Link>
         </div>
-        <h1 className="text-xl font-semibold text-gray-800 text-center flex-1 justify-center">Tu carrito de compras</h1>
+        
+        <h1 className="text-xl font-semibold text-gray-800 text-center flex-1 justify-center">
+          Tu carrito de compras
+          </h1>
         <div className="w-8" /> 
 
-      {/* Contenido */}
+     
       <div className=" mx-auto p-6  gap-6 flex justify-center w-full  ">
-        {/* Lista de productos */}
-        <div className="md:col-span-2 bg-white rounded-xl shadow p-4">
+        <div className="flex flex-col justify-center items-center  bg-white rounded-xl shadow-none p-4 w-full">
           {cartItems.length === 0 ? (
-            <div className="text-center py-16">
+            <div className="text-center py-16 w-full">
               <p className="text-gray-500 text-lg">🛍️ Tu carrito está vacío</p>
               <Link
                 href="/"
-                className="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded-lg transition"
+                className="mt-4 inline-block bg-Verde-Azulado hover:bg-azulElectrico text-black font-semibold px-6 py-2 rounded-lg transition"
               >
                 Ver productos
               </Link>
@@ -45,13 +44,13 @@ export default function CartPage() {
                 >
                   {/* Imagen del producto */}
                   
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 ">
                     <Link href={`/product/${item.id}`}>
                     <div className="w-24 h-16 flex-shrink-0">
                       <img
                         src={item.image || "/placeholder.png"}
                         alt={item.name}
-                        className="w-19 h-16 object-cover rounded-lg border"
+                        className="w-19 duration-300 h-16 object-cover rounded-lg border transition-transform hover:scale-105"
                         />
                     </div>
                     </Link>
@@ -113,3 +112,5 @@ export default function CartPage() {
 }
 
 
+
+export default CartPage

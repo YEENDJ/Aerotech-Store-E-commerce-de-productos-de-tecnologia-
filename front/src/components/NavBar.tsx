@@ -36,7 +36,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { PATHROUTES } from "@/utils/PathRoutes";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
-import { LogOut } from "lucide-react";
+import { LogOut, ShoppingCart, User } from "lucide-react";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -90,11 +90,7 @@ const NavBar = () => {
       <div className="flex items-center space-x-4 relative" ref={menuRef}>
         {/* Ícono de usuario con menú */}
         <button onClick={() => setOpen(!open)}>
-          <img
-            src="/IconoUsuario.png"
-            alt="icono usuario"
-            className="cursor-pointer h-18 hover:opacity-80 transition"
-            />
+          <User size={32} className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition cursor-pointer"/>
         </button>
 
         {/* Menú desplegable */}
@@ -118,11 +114,7 @@ const NavBar = () => {
 
         {/* Ícono carrito */}
         <Link href={PATHROUTES.CART}>
-          <img
-            src="/IconoCarrito.png"
-            alt="icono Carrito"
-            className="h-18 hover:opacity-80 transition"
-          />
+        <ShoppingCart size={32} className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition" />
         </Link>
       </div>
     </nav>

@@ -1,4 +1,4 @@
-import swal from "sweetalert"
+
 import { useCart } from "@/contexts/CartContext" 
 import { IProducts } from "@/interfaces/Iproducts"
 import Swal from "sweetalert2"
@@ -10,27 +10,9 @@ interface ButtonProps {
 const ButtonAddToCart = ({ product }: ButtonProps) => {
   const { addToCart } = useCart()
 
-  const handleAddToCart = () => {
-    if (product) {
-      addToCart(product)
-     Swal.fire({
-    title: "¡Agregado!",
-    text: "El producto fue agregado al carrito correctamente.",
-    icon: "success",
-    timer: 2000, 
-    showConfirmButton: false, 
-  })
-
-    } else {
-      Swal.fire({
-    title: "Error",
-    text: "No se pudo agregar el producto al carrito.",
-    icon: "error",
-    timer: 2000, 
-    showConfirmButton: false, 
-  })
-    }
-  }
+ const handleAddToCart = () => {
+  addToCart(product);
+};
 
   return (
     <button
