@@ -31,17 +31,19 @@
 
 // export default NavBar
 
-"use client";
+"use client"
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { PATHROUTES } from "@/utils/PathRoutes";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { LogOut, ShoppingCart, User } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const {dataUser, logout } = useAuth();
+  const router = useRouter();
 
   // Cierra el menú al hacer clic fuera
   useEffect(() => {
@@ -55,7 +57,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse">
+    <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse rounded-[1rem]">
       
       {/* <div>
         {
@@ -87,6 +89,7 @@ const NavBar = () => {
       </div>
 
       {/* Íconos */}
+      
       <div className="flex items-center space-x-4 relative" ref={menuRef}>
         {/* Ícono de usuario con menú */}
         <button onClick={() => setOpen(!open)}>
@@ -94,7 +97,7 @@ const NavBar = () => {
         </button>
 
         {/* Menú desplegable */}
-        {open && (
+        {/* {open && ( 
           <div className="absolute top-10 right-0 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
             <Link
               href={PATHROUTES.LOGIN}
@@ -110,12 +113,53 @@ const NavBar = () => {
               Registrarse
             </Link>
           </div>
-        )}
+        )} */}
 
-        {/* Ícono carrito */}
-        <Link href={PATHROUTES.CART}>
-        <ShoppingCart size={32} className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition" />
+
+{open && (
+  <div className="absolute top-10 right-0 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
+    {/* Si NO hay usuario logueado */}
+    {!dataUser ? (
+      <>
+        <Link
+          href={PATHROUTES.LOGIN}
+          className="bg-azulElectrico hover:bg-Verde-Azulado text-white font-semibold py-2 px-4 rounded-t-2xl transition-colors duration-300"
+        >
+          Iniciar sesión
         </Link>
+        <div className="h-px bg-gray-200" />
+        <Link
+          href={PATHROUTES.REGISTER}
+          className="bg-azulElectrico hover:bg-Verde-Azulado text-white font-semibold py-2 px-4 rounded-b-2xl transition-colors duration-300"
+        >
+          Registrarse
+        </Link>
+      </>
+    ) : (
+      // Si SÍ hay usuario logueado
+      <>
+        <p className="py-2 font-semibold text-gray-700">
+          Hola, {dataUser.user.name}
+        </p>
+        <div className="h-px bg-gray-200" />
+        <button
+  onClick={() => {
+    logout();             // 1️⃣ Cierra sesión
+    router.push(PATHROUTES.HOME); // 2️⃣ Redirige al login
+  }}
+  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-b-2xl transition-colors duration-300 cursor-pointer"
+>
+  Cerrar sesión
+</button>
+      </>
+    )}
+  </div>
+)}
+
+
+      {dataUser && (<Link href={PATHROUTES.CART}>
+        <ShoppingCart size={32} className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition" />
+        </Link>)}
       </div>
     </nav>
   );

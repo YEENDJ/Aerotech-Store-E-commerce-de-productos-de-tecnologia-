@@ -1,17 +1,21 @@
 "use client";
 
+import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
+import { createOrder } from "@/Services/orders.Services";
 import { Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
  const CartPage = () => {
   const { cartItems, getTotal, removeFromCart, clearCart } = useCart();
 
+  const {dataUser} = useAuth();
+  
   return (
     <main className="min-h-screen bg-gray-50 ">
 
         <div className="bg-[#F8F9FA] shadow-sm px-6 py-4 flex items-center justify-between rounded-lg w-f">
-          <Link href="/" className="text-gray-600 hover:text-black flex items-center gap-1">
+          <Link href="/product" className="text-gray-600 hover:text-black flex items-center gap-1">
             <ArrowLeft className="flex justify-start w-5 h-5" />
             <span>Seguir comprando</span>
           </Link>
@@ -42,8 +46,6 @@ import Link from "next/link";
                   key={item.id}
                   className="flex items-center justify-between border-b border-gray-200 py-4"
                 >
-                  {/* Imagen del producto */}
-                  
                   <div className="flex items-center gap-4 ">
                     <Link href={`/product/${item.id}`}>
                     <div className="w-24 h-16 flex-shrink-0">
@@ -75,7 +77,7 @@ import Link from "next/link";
           )}
         </div>
 
-        {/* Resumen de compra */}
+        
         {cartItems.length > 0 && (
           <div className="bg-white rounded-xl shadow p-6 h-fit w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <h2 className="text-lg font-semibold mb-4">Resumen de compra</h2>

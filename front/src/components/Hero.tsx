@@ -1,25 +1,67 @@
-export default function HeroVideo() {
+
+import Link from "next/link";
+
+export  default function HeroVideo() {
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden">
-      {/* 🎥 Video de fondo */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        src="public/videos/hero.mp4"
-        autoPlay
-        muted
-        loop
-      />
+<Link href="/product/1">
+    <section className="relative h-[60vh] w-full overflow-hidden cursor-pointer">
+ <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover rounded-[1rem]"
+>
+  <source
+    src="https://www-cdn.djiits.com/reactor/assets/_next/static/videos/f7422fa4-6ce4-4938-80c4-c0a70d3349c5.mp4?w=2560&h=1440"
+    type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'
+    />
+</video>
 
-      {/* 🌫️ Capa oscura para legibilidad */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
-
-      {/* 🧾 Contenido encima del video */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
-        <h1 className="text-4xl md:text-6xl font-bold">Bienvenido</h1>
-        <p className="mt-4 text-lg md:text-xl">
-          Disfruta de nuestros mejores productos
-        </p>
+    <div className="absolute inset-0 z-20 flex items-start justify-center">
+        <h3 className="text-white text-5xl font-bold drop-shadow-xl">
+          Descubre el nuevo DJI Neo 2
+        </h3>
       </div>
+
+
     </section>
-  );
-}
+    </Link>
+
+
+  )}
+
+//   export default function HeroVideo2() {
+//   return (
+// <Link href="/product/2">
+//     <section className="relative h-[60vh] w-full overflow-hidden cursor-pointer">
+//  <video
+//   autoPlay
+//   muted
+//   loop
+//   playsInline
+//   className="absolute inset-0 w-full h-full object-cover rounded-[1rem]"
+// >
+//   <source
+//     src="https://www-cdn.djiits.com/dps/747a9e3f3bda000502491ee4ddf7096e.svg?w=482&h=48"
+//     type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'
+//     />
+// </video>
+
+//     <div className="absolute inset-0 z-20 flex items-start justify-center">
+//         <h3 className="text-white text-5xl font-bold drop-shadow-xl">
+//           Descubre el nuevo DJI Mini 5 Pro
+//         </h3>
+//       </div>
+
+
+//     </section>
+//     </Link>
+
+
+//   )}
+
+
+
+
+

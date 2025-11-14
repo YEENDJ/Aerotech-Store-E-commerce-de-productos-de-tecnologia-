@@ -22,10 +22,11 @@
 // };
 
 // export default ProductCard
-
+"use client"
 
 import { IProducts } from "@/interfaces/Iproducts";
 import Link from "next/link";
+import ButtonAddToCart from "./ButtonAddToCart";
 
 
 interface CardProps {
@@ -53,6 +54,7 @@ const ProductCard = ({ product }: CardProps) => {
           Ver Mas
         </button>
     </Link>
+    <ButtonAddToCart product ={product} />
   
       </div>
 

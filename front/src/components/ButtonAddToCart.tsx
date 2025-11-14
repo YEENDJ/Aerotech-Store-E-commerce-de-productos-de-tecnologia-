@@ -1,7 +1,7 @@
 
 import { useCart } from "@/contexts/CartContext" 
 import { IProducts } from "@/interfaces/Iproducts"
-import Swal from "sweetalert2"
+
 
 interface ButtonProps {
   product: IProducts
