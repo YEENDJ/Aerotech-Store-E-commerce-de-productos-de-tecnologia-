@@ -1,9 +1,12 @@
+import { useAuth } from '@/contexts/AuthContext'
 import React from 'react'
 
-const page = () => {
+const DahsboardPage = () => {
+  const {dataUser} = useAuth();
+
   return (
     <div>esta es la dashboard</div>
   )
 }
 
-export default page
+export default DahsboardPage

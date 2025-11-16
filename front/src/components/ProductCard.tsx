@@ -35,28 +35,55 @@ interface CardProps {
 
 const ProductCard = ({ product }: CardProps) => {
   return (
-    <div className="flex flex-col w-72 h-96 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-52 object-contain mb-3 rounded-md"  
-          />
-        <p className="text-NegroCarbon font-semibold text-center line-clamp-1">
-          {product.name}
-        </p>
-        <p className="text-[#007BFF] font-bold text-lg mt-1">
-          ${product.price.toLocaleString()}
-        </p>
+    // <div className="flex flex-col w-72 h-96 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4" >
+    //     <img
+    //       src={product.image}
+    //       alt={product.name}
+    //       className="w-full h-52 object-contain mb-3 rounded-md"  
+    //       />
+    //     <p className="text-NegroCarbon font-semibold text-center line-clamp-1">
+    //       {product.name}
+    //     </p>
+    //     <p className="text-[#007BFF] font-bold text-lg mt-1">
+    //       ${product.price.toLocaleString()}
+    //     </p>
 
-    <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
-        <button className="cursor-pointer w-full bg-[#007BFF] text-white px-3 py-2 rounded-lg hover:bg-[#0056cc] transition mt-4 text-sm"
-        >
+    // <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
+    //     <button className="cursor-pointer w-full bg-[#007BFF] text-white px-3 py-2 rounded-lg hover:bg-[#0056cc] transition mt-4 text-sm"
+    //     >
+    //       Ver Mas
+    //     </button>
+    // </Link>
+    // <ButtonAddToCart product ={product} />
+  
+    //   </div>
+
+<div className="flex flex-col w-72 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4 gap-2">
+      
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-40 object-contain rounded-md"
+      />
+
+      <p className="text-NegroCarbon font-semibold text-center line-clamp-1">
+        {product.name}
+      </p>
+
+      <p className="text-[#007BFF] font-bold text-lg">
+        ${product.price.toLocaleString()}
+      </p>
+
+      <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
+        <button className="cursor-pointer w-full bg-Verde-Azulado text-white px-3 py-2 rounded-lg hover:bg-azulElectrico transition text-sm">
           Ver Mas
         </button>
-    </Link>
-    <ButtonAddToCart product ={product} />
-  
-      </div>
+      </Link>
+
+      {/* NO SE MODIFICA NADA DEL BOTÓN */}
+      <ButtonAddToCart product={product} />
+</div>
+
 
   );
 };

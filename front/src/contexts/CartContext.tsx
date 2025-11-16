@@ -42,21 +42,41 @@ export const CartProvider: React.FC<CartProviderProps> = ({children}) => {
 
     const {dataUser} =useAuth ();
     const [cartItems, setCarItem] = useState<IProducts[]> ([]);
+    const userId = dataUser?.user.id; 
+    const CART_KEY = userId ? `cart_${userId}` : null;
 
-    useEffect(()=> {
-        if(cartItems.length > 0){
-            localStorage.setItem(CARTLOCALSTORAGE, JSON.stringify(cartItems))
-        }
-    }, [cartItems])
 
-    useEffect (()=>{
-        if (typeof window !== "undefined" && window.localStorage) {
-            const cartInfo = localStorage.getItem(CARTLOCALSTORAGE);
-            if (cartInfo){
-                setCarItem(JSON.parse(cartInfo))
-            }
-        }
-    }, []);
+// useEffect(()=> {
+//     if(cartItems.length > 0){
+//         localStorage.setItem(CARTLOCALSTORAGE, JSON.stringify(cartItems))
+//     }
+// }, [cartItems])
+
+// useEffect (()=> {
+//     if (typeof window !== "undefined" && window.localStorage) {
+//         const cartInfo = localStorage.getItem(CARTLOCALSTORAGE);
+//         if (cartInfo){
+//             setCarItem(JSON.parse(cartInfo))
+//         }
+//     }
+// }, []);
+
+useEffect(() => {
+    if (!CART_KEY) return; // si no hay usuario, no se carga nada
+
+    const saved = localStorage.getItem(CART_KEY);
+    if (saved) {
+      setCarItem(JSON.parse(saved));
+    } else {
+      setCarItem([]); // si no existe, inicializa vacío
+    }
+  }, [CART_KEY]);
+
+  // 2. Guardar carrito cada vez que cambie
+  useEffect(() => {
+    if (!CART_KEY) return;
+    localStorage.setItem(CART_KEY, JSON.stringify(cartItems));
+  }, [cartItems, CART_KEY]);
 
 
     const addToCart = (product : IProducts) => {

@@ -68,6 +68,10 @@
 import React, { useState } from "react";
 import { IProducts } from "@/interfaces/Iproducts";
 import ButtonAddToCart from "@/components/ButtonAddToCart";
+import { useCart } from "@/contexts/CartContext";
+import Link from "next/link";
+import { ShoppingCart } from "lucide-react";
+
 
 interface ProductDetailCardProps {
   product: IProducts;
@@ -76,6 +80,8 @@ interface ProductDetailCardProps {
 const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
   const [showZoom, setShowZoom] = useState(false);
   const [backgroundPosition, setBackgroundPosition] = useState("center");
+
+const {cartItems} = useCart()
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -127,8 +133,19 @@ const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+
+        <div className="flex  gap-3">
           <ButtonAddToCart product ={product} />
+
+          {!!cartItems.length && (
+            <Link
+  href="/cart"
+  className="bg-Verde-Azulado hover:bg-azulElectrico text-white px-4 py-2 rounded-lg text-center flex items-center justify-center w-full  text-sm"
+>
+  Ir al
+  <ShoppingCart size={20} className="ml-2" />
+</Link>
+          )       }
         </div>
 
         <div className="mt-6 text-sm text-gray-600">

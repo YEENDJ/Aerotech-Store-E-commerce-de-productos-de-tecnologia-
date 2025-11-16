@@ -5,11 +5,33 @@ import { useCart } from "@/contexts/CartContext";
 import { createOrder } from "@/Services/orders.Services";
 import { Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { PATHROUTES } from "@/utils/PathRoutes";
 
  const CartPage = () => {
-  const { cartItems, getTotal, removeFromCart, clearCart } = useCart();
+  const { cartItems, getTotal, removeFromCart, clearCart, getIdItems } =
+   useCart();
+   const router = useRouter();
 
   const {dataUser} = useAuth();
+
+  const handleCheckout = async ()=> {
+    if (!dataUser?.token){
+      return
+    }
+    try {
+      await createOrder(getIdItems(), dataUser.token);
+      clearCart();
+    } catch (error) {
+      Swal.fire({
+          title: "Error en la compra",
+          text: "Ocurrió un problema procesando tu pago. Inténtalo nuevamente.",
+          icon: "error",
+          confirmButtonText: "Entendido"
+          });
+    }
+  }
   
   return (
     <main className="min-h-screen bg-gray-50 ">
@@ -93,15 +115,24 @@ import Link from "next/link";
 
             <div className="mt-6 space-y-3">
               <button
-                onClick={() => alert("Redirigir a pago 🏦")}
+                onClick={() => {
+                handleCheckout();
+              router.push(PATHROUTES.HOME)
+            }}
                 className=" cursor-pointer w-full bg-Verde-Azulado hover:bg-azulElectrico text-black font-semibold py-2 rounded-lg transition"
               >
                 Finalizar compra
               </button>
 
+
+
+
+
+
               <button
                 onClick={clearCart}
                 className=" cursor-pointer w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded-lg transition"
+                
               >
                 Vaciar carrito
               </button>
