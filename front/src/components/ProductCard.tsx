@@ -66,7 +66,7 @@ const ProductCard = ({ product }: CardProps) => {
         className="w-full h-40 object-contain rounded-md"
       />
 
-      <p className="text-NegroCarbon font-semibold text-center line-clamp-1">
+      <p className="text-center font-semibold text-gray-800 break-words whitespace-normal leading-tight min-h-[48px]">
         {product.name}
       </p>
 

@@ -81,7 +81,13 @@ useEffect(() => {
 
     const addToCart = (product : IProducts) => {
         if (!dataUser){
-            swal("Ooops", "Debes estar logueado para añadir 1 producto al carro de compras", "warning");
+            Swal.fire({
+                title: "Ooops",
+                text: "Debes estar logueado para añadir productos al carrito de compras",
+                icon: "warning",
+                timer: 3000, 
+                showConfirmButton: false, 
+              })
             return;
         }
 
@@ -89,7 +95,13 @@ useEffect(() => {
             (item) => item.id === product.id
         );
         if (ExistingProduct){
-            swal("Ooops", "Solo es permitido seleccionar 1 unidad por usuario", "warning");
+            Swal.fire({
+                title: "Ooops",
+                text: "Solo es permitido seleccionar 1 unidad por usuario",
+                icon: "warning",
+                timer: 3000, 
+                showConfirmButton: false, 
+              })
             return 
         }
         else {
@@ -97,7 +109,7 @@ useEffect(() => {
                 title: "¡Agregado!",
                 text: "El producto fue agregado al carrito correctamente.",
                 icon: "success",
-                timer: 2000, 
+                timer: 3000, 
                 showConfirmButton: false, 
               })
         }

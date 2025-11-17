@@ -70,7 +70,7 @@ import { IProducts } from "@/interfaces/Iproducts";
 import ButtonAddToCart from "@/components/ButtonAddToCart";
 import { useCart } from "@/contexts/CartContext";
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { ArrowLeft, ShoppingCart } from "lucide-react";
 
 
 interface ProductDetailCardProps {
@@ -91,7 +91,19 @@ const {cartItems} = useCart()
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg p-6 gap-8 max-w-5xl mx-auto">
+
+    <>
+
+    <div className="bg-[#F8F9FA] shadow-sm px-6 py-4 flex items-center justify-between rounded-lg w-f flex-row">
+          <Link href="/product" className="text-gray-600 hover:text-black flex items-center gap-1">
+            <ArrowLeft className="flex justify-start w-5 h-5" />
+            <span>Seguir comprando</span>
+          </Link>
+    </div>
+    
+    <br className="bg-[#F8F9FA] "/>
+    <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg p-6 gap-8 max-w-5xl mx-auto ">
+
       {/* Imagen del producto con efecto lupa */}
       <div
         className="flex-1 flex items-center justify-center relative"
@@ -108,9 +120,9 @@ const {cartItems} = useCart()
         {/* Vista de zoom */}
         {showZoom && (
           <div
-            className="hidden md:block absolute top-0 right-[-420px] w-[400px] h-[400px] border border-gray-300 rounded-lg shadow-lg bg-no-repeat bg-white"
-            style={{
-              backgroundImage: `url(${product.image})`,
+          className="hidden md:block absolute top-0 right-[-420px] w-[400px] h-[400px] border border-gray-300 rounded-lg shadow-lg bg-no-repeat bg-white"
+          style={{
+            backgroundImage: `url(${product.image})`,
               backgroundSize: "200%", // nivel de zoom
               backgroundPosition,
             }}
@@ -154,6 +166,7 @@ const {cartItems} = useCart()
         </div>
       </div>
     </div>
+            </>
   );
 };
 

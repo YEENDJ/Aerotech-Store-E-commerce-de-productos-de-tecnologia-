@@ -11,6 +11,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { loginUserService } from "@/Services/auth.Services";
 import { useAuth } from "@/contexts/AuthContext";
+import Swal from "sweetalert2";
 
 
 
@@ -37,22 +38,55 @@ const LoginForm = () => {
           const msg = res.data?.message?.toLowerCase() || "";
 
           if (msg.includes("user") || msg.includes("no existe")) {
-            swal("Correo no registrado", "Verifica tu correo o regístrate", "warning");
+            Swal.fire({
+                        title: "Correo no registrado",
+                        text: "Verifica tu correo o regístrate",
+                        icon: "warning",
+                        timer: 2000, 
+                        showConfirmButton: false, 
+                      })
+
           } else if (msg.includes("password") || msg.includes("contraseña")) {
-            swal("Contraseña incorrecta", "Vuelve a intentarlo", "error");
+            Swal.fire({
+                        title: "Contraseña incorrecta",
+                        text: "Vuelve a intentarlo",
+                        icon: "error",
+                        timer: 3000, 
+                        showConfirmButton: false, 
+                      })
+
           } else {
-            swal("Error", "Hubo un problema al iniciar sesión", "error");
+            Swal.fire({
+                        title: "Error",
+                        text: "Hubo un problema al iniciar sesión",
+                        icon: "error",
+                        timer: 3000, 
+                        showConfirmButton: false, 
+                      })
           }
           return;
         }
 
         setDataUser(res.data);
-        swal("¡Listo!", "Inicio de Sesión exitoso", "success");
+        Swal.fire({
+                        title: "¡Listo!",
+                        text: "Inicio de Sesión exitoso",
+                        icon: "success",
+                        timer: 2000, 
+                        showConfirmButton: false, 
+                      })
+
         resetForm();
         router.push("/"); 
 
       } catch (error: any) {
-        swal("Error", "No se pudo conectar con el servidor", "error");
+        Swal.fire({
+                        title: "Error",
+                        text: "No se pudo conectar con el servidor",
+                        icon: "error",
+                        timer: 4000, 
+                        showConfirmButton: false, 
+                      })
         resetForm();
       }
     }
