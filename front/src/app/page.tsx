@@ -1,5 +1,6 @@
 import FeaturedProducts from "@/components/FeaturedProducts";
 import HeroVideo from "@/components/Hero";
+import OrderList from "@/components/OrderList";
 import ProductCard from "@/components/ProductCard";
 import { getAllProductsService } from "@/Services/products.services";
 

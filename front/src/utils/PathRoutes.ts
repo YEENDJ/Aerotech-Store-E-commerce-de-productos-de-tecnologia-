@@ -4,6 +4,5 @@ export enum PATHROUTES {
     HOME = "/",
     LANDING = "/landing",
     LOGIN = "/login",
-    REGISTER = "/register",
-    
+    REGISTER = "/register",    
 }

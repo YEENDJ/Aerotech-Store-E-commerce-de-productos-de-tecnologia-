@@ -40,7 +40,7 @@ export default function HeroVideoCarousel() {
   };
 
   return (
-    <section className="relative h-[60vh] w-full overflow-hidden rounded-xl flex ">
+    <section className="relative h-[60vh] w-full overflow-hidden  flex ">
       
       <video
     key={videos[current].id}

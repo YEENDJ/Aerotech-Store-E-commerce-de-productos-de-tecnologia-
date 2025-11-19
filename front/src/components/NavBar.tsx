@@ -57,7 +57,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse rounded-[1rem]">
+    <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse rounded-t-xl">
       
       {/* <div>
         {
@@ -141,16 +141,23 @@ const NavBar = () => {
         <p className="py-2 font-semibold text-gray-700">
           Hola, {dataUser.user.name}
         </p>
+
         <div className="h-px bg-gray-200" />
         <button
-  onClick={() => {
-    logout();             // 1️⃣ Cierra sesión
-    router.push(PATHROUTES.HOME); // 2️⃣ Redirige al login
-  }}
-  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-b-2xl transition-colors duration-300 cursor-pointer"
->
-  Cerrar sesión
-</button>
+          onClick={() => {
+          logout();             // 1️⃣ Cierra sesión
+          router.push(PATHROUTES.HOME); // 2️⃣ Redirige al login
+          }}
+        className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4  transition-colors duration-300 cursor-pointer"
+        >
+        Cerrar sesión
+        </button>
+          <div>
+
+        <Link  href={PATHROUTES.DASHBOARD}>
+        <p className=" bg-azulElectrico text-white hover:bg-Verde-Azulado rounded-b-2xl"> Ver Ordenes</p> 
+        </Link>
+          </div>
       </>
     )}
   </div>

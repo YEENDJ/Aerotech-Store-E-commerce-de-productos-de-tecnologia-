@@ -1,12 +1,12 @@
-import { useAuth } from '@/contexts/AuthContext'
+import OrderList from '@/components/OrderList'
 import React from 'react'
 
-const DahsboardPage = () => {
-  const {dataUser} = useAuth();
-
+const orderListpage = () => {
   return (
-    <div>esta es la dashboard</div>
+    <div>
+        <OrderList/>
+    </div>
   )
 }
 
-export default DahsboardPage
+export default orderListpage
