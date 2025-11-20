@@ -19,7 +19,7 @@ export default function Example() {
               <li><a href="/" className="hover:text-indigo-600 transition">Home</a></li>
               <li><a href="/" className="hover:text-indigo-600 transition">Support</a></li>
               <li><a href="/" className="hover:text-indigo-600 transition">Pricing</a></li>
-              <li><a href="/" className="hover:text-indigo-600 transition">Affiliate</a></li>
+              <li><Link href="/RetailStore" className="hover:text-indigo-600 transition">Affiliate</Link></li>
             </ul>
           </div>
           <div>
