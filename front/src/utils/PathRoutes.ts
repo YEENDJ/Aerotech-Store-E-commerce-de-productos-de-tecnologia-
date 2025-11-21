@@ -5,5 +5,6 @@ export enum PATHROUTES {
     LANDING = "/landing",
     LOGIN = "/login",
     REGISTER = "/register", 
-    RETAILSTORAGE = "/retailStore"   
+    RETAILSTORAGE = "/retailStore" ,
+    PRODUCT = "/product"  
 }

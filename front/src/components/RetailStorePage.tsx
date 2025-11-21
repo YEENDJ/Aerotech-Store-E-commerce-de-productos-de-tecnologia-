@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function PuntoFisico() {
+export default function   RetailStorePage() {
   return (
     <section className="w-full max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -89,6 +89,20 @@ export default function PuntoFisico() {
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
+
+         <div className="mt-6 grid sm:grid-cols-2 gap-4">
+          <div>
+            <p className="font-medium">Horario de atención</p>
+            <p className="text-sm text-gray-500">Lunes - Viernes: 9:00 - 18:00</p>
+            <p className="text-sm text-gray-500">Sábados: 9:00 - 13:00</p>
+          </div>
+
+          <div>
+            <p className="font-medium">Contáctanos</p>
+            <p className="text-sm text-gray-500">Tel/WhatsApp: +57 314 000 0000</p>
+            <p className="text-sm text-gray-500">Email: contacto@dji-villavicencio.co</p>
+          </div>
+        </div>
       </motion.div>
     </section>
   );

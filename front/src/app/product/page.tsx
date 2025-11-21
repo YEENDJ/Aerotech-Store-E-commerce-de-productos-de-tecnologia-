@@ -1,7 +1,7 @@
 import { getAllProductsService } from "@/Services/products.services";
 import ProductsList from "@/components/ProductsList";
 
-const Home = async () => {
+const Productos = async () => {
   // Obtenemos todos los productos
   const allProducts = await getAllProductsService();
 
@@ -15,4 +15,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Productos;
