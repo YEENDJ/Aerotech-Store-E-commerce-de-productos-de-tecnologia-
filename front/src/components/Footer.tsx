@@ -1,4 +1,5 @@
 import { PATHROUTES } from "@/utils/PathRoutes";
+import { Drone, DroneIcon } from "lucide-react";
 import Link from "next/link";
 
 export default function Example() {
@@ -10,7 +11,7 @@ export default function Example() {
         <div className="flex flex-wrap items-start gap-10 md:gap-[60px] xl:gap-[140px]">
           
             <Link href={PATHROUTES.HOME} >
-             <img src="/favicon.ico" alt=""  className=" w-8 h-9 "/>
+              <Drone className=" w-8 h-8 text-azulElectrico "/>
             </Link>
         
           <div>

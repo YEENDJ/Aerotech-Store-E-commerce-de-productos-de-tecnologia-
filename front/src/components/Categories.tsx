@@ -1,4 +1,6 @@
+import { PATHROUTES } from "@/utils/PathRoutes";
 import { Camera, Drone, Mic, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 
 export default function Categorias() {
@@ -28,21 +30,27 @@ return (
 className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
 >
     <h1> Camaras Deportivas</h1>
+    <Link href={PATHROUTES.CAMARAS}>
     <Camera className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
+    </Link>
 </div>
 
 <div
 className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
 >
+    <Link href={PATHROUTES.DRONES}>
     <h1> Drones </h1>
     <Drone className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
+    </Link>
 </div>
 
 <div
 className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
 >
+    <Link href={PATHROUTES.MICROFONOS}>
     <h1> Microfonos </h1>
     <Mic className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
+    </Link>
 </div>
 
 </div>

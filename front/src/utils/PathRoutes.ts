@@ -6,5 +6,8 @@ export enum PATHROUTES {
     LOGIN = "/login",
     REGISTER = "/register", 
     RETAILSTORAGE = "/retailStore" ,
-    PRODUCT = "/product"  
+    PRODUCT = "/product" ,
+    DRONES = "/drones", 
+    CAMARAS = "/camaras" ,
+    MICROFONOS = "/microfonos"
 }
