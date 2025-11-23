@@ -50,14 +50,32 @@ export default function CategoryProducts({ categoryId }: { categoryId: number })
       </p>
     );
 
+
+ const categorias = [
+    { id: 1, titulo: "Drones" },
+    { id: 2, titulo: "Audio" },
+    { id: 3, titulo: "Video" },
+  ];
+
+  const categoriaActual = categorias.find(
+    (cat) => cat.id === Number(categoryId)
+  );
+
   return (
     
 <>
-<div className="flex flex-wrap justify-center gap-8 w-full max-w-[1300px] mx-auto px-6">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+<div className="flex flex-col items-center w-full max-w-[1300px] mx-auto px-6 ">
+  <h1 className="text-3xl font-bold my-10">
+    {categoriaActual ? categoriaActual.titulo : "Categoría desconocida"}
+  </h1>
+
+  <div className="flex flex-wrap justify-center gap-8 w-full">
+    {products.map((product) => (
+      <ProductCard key={product.id} product={product} />
+    ))}
+  </div>
+
+</div>
 </>
 
   );

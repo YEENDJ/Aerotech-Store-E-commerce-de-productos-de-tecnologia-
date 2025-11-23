@@ -2,7 +2,6 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
-import { createOrder } from "@/Services/orders.Services";
 import { Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
@@ -14,25 +13,6 @@ import { PATHROUTES } from "@/utils/PathRoutes";
    useCart();
    const router = useRouter();
 
-  const {dataUser} = useAuth();
-
-  const handleCheckout = async ()=> {
-    if (!dataUser?.token){
-      return
-    }
-    try {
-      await createOrder(getIdItems(), dataUser.token);
-      clearCart();
-    } catch (error) {
-      Swal.fire({
-          title: "Error en la compra",
-          text: "Ocurrió un problema procesando tu pago. Inténtalo nuevamente.",
-          icon: "error",
-          confirmButtonText: "Entendido"
-          });
-    }
-  }
-  
   return (
     <main className="min-h-screen bg-gray-50 ">
 
@@ -115,19 +95,24 @@ import { PATHROUTES } from "@/utils/PathRoutes";
 
             <div className="mt-6 space-y-3">
               <button
-                onClick={() => {
-                handleCheckout();
-              router.push(PATHROUTES.HOME)
-            }}
-                className=" cursor-pointer w-full bg-Verde-Azulado hover:bg-azulElectrico text-black font-semibold py-2 rounded-lg transition"
-              >
-                Finalizar compra
-              </button>
-
-
-
-
-
+              onClick={() => {
+                Swal.fire({
+                  title: "¿Deseas finalizar la compra?",
+                  text: "Serás llevado al checkout para completar los datos.",
+                  icon: "info",
+                  showCancelButton: true,
+                  confirmButtonText: "Sí, continuar",
+                  cancelButtonText: "Volver al Carrito",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    router.push(PATHROUTES.CHECKOUT);
+                  }
+                });
+              }}
+                className="cursor-pointer w-full bg-azulElectrico hover:bg-Verde-Azulado text-black font-semibold py-2 rounded-lg transition"
+>
+  Finalizar compra
+</button>
 
               <button
                 onClick={clearCart}

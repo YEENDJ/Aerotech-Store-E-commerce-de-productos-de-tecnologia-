@@ -25,7 +25,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="relative flex items-center justify-between px-6 py-3 bg-GrisClaro flex-row-reverse rounded-t-xl">
+    <nav className=" flex items-center justify-between px-6 py-3 bg-[#9fe6ee] flex-row-reverse rounded-t-xl fixed top-0 left-0 w-full  backdrop-blur shadow z-50">
       
       {/* Logo centrado */}
       <div className="absolute left-1/2 transform -translate-x-1/2">

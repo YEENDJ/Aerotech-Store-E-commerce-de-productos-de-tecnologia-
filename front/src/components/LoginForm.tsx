@@ -6,7 +6,6 @@ import Link from "next/link";
 import {useFormik } from "formik";
 import { initialValuesLogin, loginValidationSchema,LoginFormValuesInterface } from "@/validators/loginSchema";
 import { useRouter } from "next/navigation";
-import swal from "sweetalert";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { loginUserService } from "@/Services/auth.Services";
@@ -26,7 +25,6 @@ const LoginForm = () => {
     initialValues : initialValuesLogin,
     validationSchema:loginValidationSchema,
     onSubmit: async (values, { resetForm }) => {
-    // setDataUser(res) 
 
       try {
 

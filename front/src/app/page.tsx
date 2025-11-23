@@ -7,6 +7,8 @@ import ProductCard from "@/components/ProductCard";
 import PuntoFisico from "@/components/RetailStorePage";
 import { getAllProductsService } from "@/Services/products.services";
 import Productos from "./product/page";
+import Checkout from "@/components/CheckoutOrder";
+import TermsAndConditions from "@/components/TermsAndConditions";
 
 
 
@@ -23,6 +25,7 @@ import Productos from "./product/page";
         <FeaturedProducts featuredIds={["5", "19", "24"]} />
         <HeroVideo2/>
         <Productos/>
+        <TermsAndConditions/>
         </>
 
 );

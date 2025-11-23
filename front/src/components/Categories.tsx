@@ -29,8 +29,8 @@ return (
 <div
 className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
 >
-    <h1> Camaras Deportivas</h1>
-    <Link href={PATHROUTES.CAMARAS}>
+    <h1 className="text-center my-3" > Video </h1>
+    <Link href={PATHROUTES.VIDEO}>
     <Camera className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
     </Link>
 </div>
@@ -39,16 +39,16 @@ className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-ce
 className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
 >
     <Link href={PATHROUTES.DRONES}>
-    <h1> Drones </h1>
+    <h1 className="text-center my-3" > Drones </h1>
     <Drone className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
     </Link>
 </div>
 
 <div
-className="bg-white rounded-2xl shadow p-8 flex flex-col items-center justify-center hover:shadow-lg transition cursor-pointer"
+className="bg-white rounded-2xl  p-8 flex flex-col items-center justify-center shadow hover:shadow-lg  transition cursor-pointer"
 >
-    <Link href={PATHROUTES.MICROFONOS}>
-    <h1> Microfonos </h1>
+    <Link href={PATHROUTES.AUDIO}>
+    <h1 className="text-center my-3"> Audio </h1>
     <Mic className="w-30 h-30 text-azulElectrico hover:text-Verde-Azulado"/>
     </Link>
 </div>

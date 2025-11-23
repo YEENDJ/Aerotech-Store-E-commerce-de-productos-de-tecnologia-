@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${primary.variable} ${secondary.variable} antialiased`}>
+      <body className= {` ${primary.variable} ${secondary.variable} antialiased pt-20`  }>
         <AuthProvider>
           <CartProvider>
           <>

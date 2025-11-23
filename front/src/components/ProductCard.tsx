@@ -1,27 +1,4 @@
-// import { IProducts } from "@/interfaces/Iproducts"
-// import Link from "next/link"
 
-
-
-// interface CardProps {
-//     product : IProducts
-// }
-
-// const  ProductCard = ({ product }: CardProps) => {
-//     return (
-//         <Link key={product.id} href={`/product/${product.id}`}>
-//         <div  key={product.id} className="flex flex-col items-center ">
-//             <img src={product.image} className="w-100 h-100 object-cover"/>
-//             <p className="mt-2 text-NegroCarbon "> {product.name} </p>
-//             <p className="mt-2 text-NegroCarbon"> {product.price} </p>
-//             <p className="mt-2 text-NegroCarbon" > {product.description} </p>
-//             <button className="w-1/2 bg-azulElectrico text-white px-4 py-2 rounded-lg hover:bg-[#0056cc] transition mt-4"> Agregar al carrito </button>
-//         </div>
-//          </Link>
-//     );
-// };
-
-// export default ProductCard
 "use client"
 
 import { IProducts } from "@/interfaces/Iproducts";
@@ -36,7 +13,7 @@ interface CardProps {
 const ProductCard = ({ product }: CardProps) => {
   return (
 
-<div className="flex flex-col w-72 items-center bg-white rounded-xl shadow-md hover:shadow-lg transition p-4 gap-2">
+<div className="flex flex-col w-72 items-center bg-white rounded-xl shadow hover:shadow-lg transition p-4 gap-2">
       
       <img
         src={product.image}
@@ -58,7 +35,6 @@ const ProductCard = ({ product }: CardProps) => {
         </button>
       </Link>
 
-      {/* NO SE MODIFICA NADA DEL BOTÓN */}
       <ButtonAddToCart product={product} />
 </div>
 
