@@ -1,11 +1,9 @@
-
-import CategoryProducts from "@/components/CategoryProducts";
+import CategoryProducts from '@/components/CategoryProducts'
 
 export default function Page() {
   return (
-    
-    <section className="flex justify-center  bg-[#FFFFFF] ">
+    <section className="flex justify-center  bg-GrisClaro ">
       <CategoryProducts categoryId={2} />
     </section>
-  );
+  )
 }

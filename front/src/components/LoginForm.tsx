@@ -1,101 +1,92 @@
+'use client'
 
-"use client";
-
-import { PATHROUTES } from "@/utils/PathRoutes";
-import Link from "next/link";
-import {useFormik } from "formik";
-import { initialValuesLogin, loginValidationSchema,LoginFormValuesInterface } from "@/validators/loginSchema";
-import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-import { loginUserService } from "@/Services/auth.Services";
-import { useAuth } from "@/contexts/AuthContext";
-import Swal from "sweetalert2";
-
-
-
+import { PATHROUTES } from '@/utils/PathRoutes'
+import Link from 'next/link'
+import { useFormik } from 'formik'
+import {
+  initialValuesLogin,
+  loginValidationSchema,
+  LoginFormValuesInterface,
+} from '@/validators/loginSchema'
+import { useRouter } from 'next/navigation'
+import { Eye, EyeOff } from 'lucide-react'
+import { useState } from 'react'
+import { loginUserService } from '@/Services/auth.Services'
+import { useAuth } from '@/contexts/AuthContext'
+import Swal from 'sweetalert2'
 
 const LoginForm = () => {
+  const { setDataUser } = useAuth()
+  const router = useRouter()
+  const [showPassword, setShowPassword] = useState(false)
 
-   const {setDataUser} = useAuth()
-   const router = useRouter();
-   const [showPassword, setShowPassword] = useState(false);
-
-  const formik = useFormik <LoginFormValuesInterface>({
-    initialValues : initialValuesLogin,
-    validationSchema:loginValidationSchema,
+  const formik = useFormik<LoginFormValuesInterface>({
+    initialValues: initialValuesLogin,
+    validationSchema: loginValidationSchema,
     onSubmit: async (values, { resetForm }) => {
-
       try {
-
-        const valuesLower = { ...values, email: values.email.toLowerCase() };
-        const res = await loginUserService(valuesLower);
-        
+        const valuesLower = { ...values, email: values.email.toLowerCase() }
+        const res = await loginUserService(valuesLower)
 
         if (!res.ok) {
-          const msg = res.data?.message?.toLowerCase() || "";
+          const msg = res.data?.message?.toLowerCase() || ''
 
-          if (msg.includes("user") || msg.includes("no existe")) {
+          if (msg.includes('user') || msg.includes('no existe')) {
             Swal.fire({
-                        title: "Correo no registrado",
-                        text: "Verifica tu correo o regístrate",
-                        icon: "warning",
-                        timer: 2000, 
-                        showConfirmButton: false, 
-                      })
-
-          } else if (msg.includes("password") || msg.includes("contraseña")) {
+              title: 'Correo no registrado',
+              text: 'Verifica tu correo o regístrate',
+              icon: 'warning',
+              timer: 2000,
+              showConfirmButton: false,
+            })
+          } else if (msg.includes('password') || msg.includes('contraseña')) {
             Swal.fire({
-                        title: "Contraseña incorrecta",
-                        text: "Vuelve a intentarlo",
-                        icon: "error",
-                        timer: 3000, 
-                        showConfirmButton: false, 
-                      })
-
+              title: 'Contraseña incorrecta',
+              text: 'Vuelve a intentarlo',
+              icon: 'error',
+              timer: 3000,
+              showConfirmButton: false,
+            })
           } else {
             Swal.fire({
-                        title: "Error",
-                        text: "Hubo un problema al iniciar sesión",
-                        icon: "error",
-                        timer: 3000, 
-                        showConfirmButton: false, 
-                      })
+              title: 'Error',
+              text: 'Hubo un problema al iniciar sesión',
+              icon: 'error',
+              timer: 3000,
+              showConfirmButton: false,
+            })
           }
-          return;
+          return
         }
 
-        setDataUser(res.data);
+        setDataUser(res.data)
         Swal.fire({
-                        title: "¡Listo!",
-                        text: "Inicio de Sesión exitoso",
-                        icon: "success",
-                        timer: 2000, 
-                        showConfirmButton: false, 
-                      })
+          title: '¡Listo!',
+          text: 'Inicio de Sesión exitoso',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        })
 
-        resetForm();
-        router.push("/"); 
-
+        resetForm()
+        router.push('/')
       } catch (error: any) {
         Swal.fire({
-                        title: "Error",
-                        text: "No se pudo conectar con el servidor",
-                        icon: "error",
-                        timer: 4000, 
-                        showConfirmButton: false, 
-                      })
-        resetForm();
+          title: 'Error',
+          text: 'No se pudo conectar con el servidor',
+          icon: 'error',
+          timer: 4000,
+          showConfirmButton: false,
+        })
+        resetForm()
       }
-    }
-  });
+    },
+  })
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-GrisClaro">
       <div className="bg-Blanco p-8 rounded-2xl shadow-xl w-full max-w-sm border border-Blanco">
-        <h2 className="text-2xl font-bold text-center mb-6 text-NegroCarbon">
-          Iniciar Sesión
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-NegroCarbon">Iniciar Sesión</h2>
 
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div>
@@ -113,17 +104,15 @@ const LoginForm = () => {
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.email}
+              {formik.errors.email}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-NegroCarbon mb-1">
-              Contraseña
-            </label>
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">Contraseña</label>
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
                 placeholder="********"
                 id="password"
@@ -131,41 +120,42 @@ const LoginForm = () => {
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 required
-                />
+              />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
-                >
+              >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.password}
+              {formik.errors.password}
             </div>
           </div>
 
           <button
             type="submit"
-             disabled={ formik.isSubmitting || !(formik.isValid && formik.dirty)}
-
-             className={`w-full bg-azulElectrico text- py-2 rounded-lg font-semibold ${
-          !( formik.isValid && formik.dirty && !formik.isSubmitting) ? "opacity-50 cursor-not-allowed " : " hover:bg-Verde-Azulado transition-colors cursor-pointer "
-        }`}
+            disabled={formik.isSubmitting || !(formik.isValid && formik.dirty)}
+            className={`w-full bg-azulElectrico text- py-2 rounded-lg font-semibold ${
+              !(formik.isValid && formik.dirty && !formik.isSubmitting)
+                ? 'opacity-50 cursor-not-allowed '
+                : ' hover:bg-Verde-Azulado transition-colors cursor-pointer '
+            }`}
           >
-            {formik.isSubmitting ? "Iniciando Sesion..." : "Entrar"}
+            {formik.isSubmitting ? 'Iniciando Sesion...' : 'Entrar'}
           </button>
         </form>
 
         <p className="text-sm text-center mt-5 text-NegroCarbon">
-          ¿No te has registrado?{" "}
-          <Link href ={PATHROUTES.REGISTER}className="text-[#00C2A8] hover:underline">
+          ¿No te has registrado?{' '}
+          <Link href={PATHROUTES.REGISTER} className="text-[#00C2A8] hover:underline">
             Registrate
           </Link>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

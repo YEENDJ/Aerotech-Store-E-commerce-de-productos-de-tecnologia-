@@ -1,9 +1,9 @@
-import TermsAndConditions from "@/components/TermsAndConditions"
+import TermsAndConditions from '@/components/TermsAndConditions'
 
 const Terms = () => {
   return (
     <div>
-        <TermsAndConditions/>
+      <TermsAndConditions />
     </div>
   )
 }

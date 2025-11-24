@@ -1,135 +1,109 @@
-"use client";
+'use client'
 
-import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, Users, ShieldCheck } from "lucide-react";
-import Link from "next/link";
-import { PATHROUTES } from "@/utils/PathRoutes";
+import React from 'react'
+import { motion } from 'framer-motion'
+import { CheckCircle, Users, ShieldCheck } from 'lucide-react'
+import Link from 'next/link'
+import { PATHROUTES } from '@/utils/PathRoutes'
 
 export default function AboutUs() {
   return (
     <section className="w-full max-w-6xl mx-auto py-16 px-6 space-y-12">
-      {/* Encabezado */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center"
-      >
+      <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">Sobre Nosotros</h1>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Somos una tienda especializada en productos DJI ubicada en Villavicencio, Meta.
-          Nuestra misión es acercar tecnología profesional a creadores, empresas y
-          entusiastas, con asesoría experta y productos totalmente originales.
+          Somos una tienda especializada en productos DJI ubicada en Villavicencio, Meta. Nuestra
+          misión es acercar tecnología profesional a creadores, empresas y entusiastas, con asesoría
+          experta y productos totalmente originales.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Historia + Valores */}
       <div className="grid md:grid-cols-2 gap-10">
-        {/* Historia */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="bg-white p-8 rounded-2xl shadow"
-        >
+        <div className="bg-white p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3">Nuestra Historia</h2>
           <p className="text-gray-600 leading-relaxed">
-            Empezamos en 2021 como un pequeño proyecto apasionado por la tecnología
-            aérea. Con el tiempo, crecimos gracias a la confianza de nuestros clientes,
-            convirtiéndonos en un punto de referencia en Villavicencio para productos DJI.
-            Hoy ofrecemos un catálogo completo y soporte especializado.
+            Empezamos en 2021 como un pequeño proyecto apasionado por la tecnología aérea. Con el
+            tiempo, crecimos gracias a la confianza de nuestros clientes, convirtiéndonos en un
+            punto de referencia en Villavicencio para productos DJI. Hoy ofrecemos un catálogo
+            completo y soporte especializado.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Valores */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="bg-white p-8 rounded-2xl shadow"
-        >
+        <div className="bg-Blanco p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3">Nuestros Valores</h2>
           <ul className="space-y-3 text-gray-600">
-            <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Transparencia en cada compra</li>
-            <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Productos 100% originales DJI</li>
-            <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Acompañamiento experto</li>
-            <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Compromiso con el cliente</li>
+            <li className="flex items-center gap-2">
+              <CheckCircle className="w-5" /> Transparencia en cada compra
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle className="w-5" /> Productos 100% originales DJI
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle className="w-5" /> Acompañamiento experto
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle className="w-5" /> Compromiso con el cliente
+            </li>
           </ul>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Misión y Visión */}
       <div className="grid md:grid-cols-2 gap-10">
-        {/* Misión */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="bg-white p-8 rounded-2xl shadow"
-        >
+        <div className="bg-Blanco p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3">Nuestra Misión</h2>
           <p className="text-gray-600 leading-relaxed">
-            Proveer productos DJI de alta calidad, asesoría honesta y soporte especializado
-            para que cada cliente obtenga la mejor experiencia tecnológica posible.
+            Proveer productos DJI de alta calidad, asesoría honesta y soporte especializado para que
+            cada cliente obtenga la mejor experiencia tecnológica posible.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Visión */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="bg-white p-8 rounded-2xl shadow"
-        >
+        <div className="bg-Blanco p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3">Nuestra Visión</h2>
           <p className="text-gray-600 leading-relaxed">
-            Convertirnos en la tienda líder en tecnología DJI en Colombia, expandiendo
-            nuestros servicios y brindando soluciones a nivel profesional y empresarial.
+            Convertirnos en la tienda líder en tecnología DJI en Colombia, expandiendo nuestros
+            servicios y brindando soluciones a nivel profesional y empresarial.
           </p>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Por qué elegirnos */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="bg-white p-8 rounded-2xl shadow"
-      >
+      <div className="bg-white p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4">¿Por qué elegirnos?</h2>
         <ul className="grid md:grid-cols-2 gap-4 text-gray-600">
-          <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Asesoría técnica y especializada</li>
-          <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Garantía oficial DJI</li>
-          <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Envíos seguros a nivel nacional</li>
-          <li className="flex items-center gap-2"><CheckCircle className="w-5" /> Entregas rápidas en Villavicencio</li>
+          <li className="flex items-center gap-2">
+            <CheckCircle className="w-5" /> Asesoría técnica y especializada
+          </li>
+          <li className="flex items-center gap-2">
+            <CheckCircle className="w-5" /> Garantía oficial DJI
+          </li>
+          <li className="flex items-center gap-2">
+            <CheckCircle className="w-5" /> Envíos seguros a nivel nacional
+          </li>
+          <li className="flex items-center gap-2">
+            <CheckCircle className="w-5" /> Entregas rápidas en Villavicencio
+          </li>
         </ul>
-      </motion.div>
+      </div>
 
-      {/* Equipo */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-        className="bg-white p-8 rounded-2xl shadow"
-      >
+      <div className="bg-white p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
           <Users className="w-6" /> Nuestro Equipo
         </h2>
         <p className="text-gray-600">
-          Contamos con un equipo pequeño pero apasionado por la tecnología aérea y la
-          innovación. Siempre dispuestos a brindar asesoría personalizada y soporte técnico.
+          Contamos con un equipo pequeño pero apasionado por la tecnología aérea y la innovación.
+          Siempre dispuestos a brindar asesoría personalizada y soporte técnico.
         </p>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Tarjetas de ejemplo - puedes cambiar las fotos por URLs reales */}
           {[
             { name: 'Yeison Enciso', role: 'Gerente', img: '/team/yeison.jpeg' },
             { name: 'Lizette Forero', role: 'Jefe Administrativa', img: '/team/lizette.png' },
             { name: 'Saimon Enciso', role: 'Ventas y Logistica', img: '/team/saimon.png' },
             { name: 'Lolo Forero', role: 'Tecnico de drones', img: '/team/lolo.png' },
-          ].map((m) => (
-            <div key={m.name} className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-lg">
+          ].map(m => (
+            <div
+              key={m.name}
+              className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-lg"
+            >
               <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden mb-3">
                 <img src={m.img} alt={m.name} className="w-full h-full object-cover" />
               </div>
@@ -138,15 +112,9 @@ export default function AboutUs() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* Certificaciones */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        className="bg-white p-8 rounded-2xl shadow"
-      >
+      <div className="bg-white p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
           <ShieldCheck className="w-6" /> Garantías y Confianza
         </h2>
@@ -157,33 +125,46 @@ export default function AboutUs() {
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">🏷️</div>
+            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+              🏷️
+            </div>
             <div>
               <p className="font-medium">Distribuidor Autorizado</p>
-              <p className="text-sm text-gray-500">Certificado por fabricantes para venta y soporte.</p>
+              <p className="text-sm text-gray-500">
+                Certificado por fabricantes para venta y soporte.
+              </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">🔧</div>
+            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+              🔧
+            </div>
             <div>
               <p className="font-medium">Soporte Técnico</p>
-              <p className="text-sm text-gray-500">Taller propio y servicio posventa en Villavicencio.</p>
+              <p className="text-sm text-gray-500">
+                Taller propio y servicio posventa en Villavicencio.
+              </p>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      
-      {/* CTA final */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9, duration: 0.5 }}
-        className="text-center"
-      >
-        <p className="text-gray-600">¿Listo para volar? Visita nuestro {<Link className="hover:bg-Verde-Azulado rounded-xs text-azulElectrico" href={PATHROUTES.PRODUCT}> catálogo</Link>} o contáctanos para asesoría personalizada.</p>
-      </motion.div>
+      <div className="text-center">
+        <p className="text-gray-600">
+          ¿Listo para volar? Visita nuestro{' '}
+          {
+            <Link
+              className="hover:bg-Verde-Azulado rounded-xs text-azulElectrico"
+              href={PATHROUTES.PRODUCT}
+            >
+              {' '}
+              catálogo
+            </Link>
+          }{' '}
+          o contáctanos para asesoría personalizada.
+        </p>
+      </div>
     </section>
-  );
+  )
 }

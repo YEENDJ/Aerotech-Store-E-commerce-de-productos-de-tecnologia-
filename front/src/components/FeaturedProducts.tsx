@@ -1,22 +1,22 @@
-import React from "react";
-import ProductCard from "@/components/ProductCard";
-import { IProducts } from "@/interfaces/Iproducts";
-import { getAllProductByIdService } from "@/Services/products.services";
+import React from 'react'
+import ProductCard from '@/components/ProductCard'
+import { IProducts } from '@/interfaces/Iproducts'
+import { getAllProductByIdService } from '@/Services/products.services'
 
 interface FeaturedProductsProps {
-  featuredIds: string[]; // los IDs de los productos destacados
+  featuredIds: string[] // los IDs de los productos destacados
 }
 
 const FeaturedProducts = async ({ featuredIds }: FeaturedProductsProps) => {
   // obtenemos los productos por ID
-  const featuredProducts: IProducts[] = [];
+  const featuredProducts: IProducts[] = []
 
   for (const id of featuredIds) {
     try {
-      const product = await getAllProductByIdService(id);
-      featuredProducts.push(product);
+      const product = await getAllProductByIdService(id)
+      featuredProducts.push(product)
     } catch (error) {
-      console.error(`Error cargando producto destacado con ID: ${id}`, error);
+      console.error(`Error cargando producto destacado con ID: ${id}`, error)
     }
   }
 
@@ -38,12 +38,12 @@ const FeaturedProducts = async ({ featuredIds }: FeaturedProductsProps) => {
           px-6
         "
       >
-        {featuredProducts.map((product) => (
+        {featuredProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedProducts;
+export default FeaturedProducts

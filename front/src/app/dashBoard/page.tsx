@@ -4,7 +4,7 @@ import React from 'react'
 const orderListpage = () => {
   return (
     <div>
-        <OrderList/>
+      <OrderList />
     </div>
   )
 }

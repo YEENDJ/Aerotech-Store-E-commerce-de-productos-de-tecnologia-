@@ -1,59 +1,51 @@
+'use client'
 
-"use client";
-
-import { PATHROUTES } from "@/utils/PathRoutes";
-import Link from "next/link";
-import { useFormik } from "formik";
-import { initialValuesRegister,RegisterFormValuesInterface,registerValidationSchema } from "@/validators/registerSchema"; 
-import { registerUserService } from "@/Services/auth.Services";
-import { useRouter } from "next/navigation";
-import swal from "sweetalert";
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
-
-
-
+import { PATHROUTES } from '@/utils/PathRoutes'
+import Link from 'next/link'
+import { useFormik } from 'formik'
+import {
+  initialValuesRegister,
+  RegisterFormValuesInterface,
+  registerValidationSchema,
+} from '@/validators/registerSchema'
+import { registerUserService } from '@/Services/auth.Services'
+import { useRouter } from 'next/navigation'
+import swal from 'sweetalert'
+import { Eye, EyeOff } from 'lucide-react'
+import { useState } from 'react'
 
 const RegisterForm = () => {
-  
-   const navigate = useRouter();
-   const [showPassword, setShowPassword] = useState(false);
-   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useRouter()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const formik = useFormik <RegisterFormValuesInterface>({
-    initialValues : initialValuesRegister,
-    validationSchema:registerValidationSchema,
+  const formik = useFormik<RegisterFormValuesInterface>({
+    initialValues: initialValuesRegister,
+    validationSchema: registerValidationSchema,
 
-     onSubmit: async (values, { resetForm }) => {
-
+    onSubmit: async (values, { resetForm }) => {
       try {
+        const valuesLower = { ...values, email: values.email.toLowerCase() }
+        const res = await registerUserService(valuesLower)
 
-         const valuesLower = { ...values, email: values.email.toLowerCase() };
-         const res = await registerUserService(valuesLower);
-         
-         swal("¡Listo!", "Usuario registrado con éxito", "success");
-         resetForm(); 
-         navigate.push(PATHROUTES.LOGIN)
-        
+        swal('¡Listo!', 'Usuario registrado con éxito', 'success')
+        resetForm()
+        navigate.push(PATHROUTES.LOGIN)
       } catch (error) {
-       swal("Error", "Hubo un error al registrar el usuario", "error");
-       resetForm(); 
+        swal('Error', 'Hubo un error al registrar el usuario', 'error')
+        resetForm()
       }
-     }
-    });
+    },
+  })
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-GrisClaro mt">
       <div className="bg-Blanco p-8 rounded-2xl shadow-xl w-full max-w-sm border border-Blanco">
-        <h2 className="text-2xl font- text-center mb-6 text-NegroCarbon">
-          Registrate
-        </h2>
+        <h2 className="text-2xl font- text-center mb-6 text-NegroCarbon">Registrate</h2>
 
         <form onSubmit={formik.handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-NegroCarbon mb-1">
-              Nombre
-            </label>
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">Nombre</label>
             <input
               type="text"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-[#E5E5E5] rounded-lg bg-white text-NegroCarbon focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
@@ -65,7 +57,7 @@ const RegisterForm = () => {
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.name}
+              {formik.errors.name}
             </div>
           </div>
 
@@ -84,18 +76,15 @@ const RegisterForm = () => {
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.email}
+              {formik.errors.email}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-NegroCarbon mb-1">
-              Contraseña
-            </label>
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">Contraseña</label>
             <div className="relative">
-
-                <input
-                type={showPassword ? "text" : "password"}
+              <input
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
                 placeholder="********"
@@ -103,17 +92,17 @@ const RegisterForm = () => {
                 onChange={formik.handleChange}
                 className="placeholder:text-[14px] w-full px-4 py-2 pr-10 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
                 required
-                />
+              />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
-                >
+              >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.password}
+              {formik.errors.password}
             </div>
           </div>
 
@@ -121,9 +110,9 @@ const RegisterForm = () => {
             <label className="block text-sm font-medium text-NegroCarbon mb-1">
               Confirmacion Contraseña
             </label>
-             <div className="relative">
+            <div className="relative">
               <input
-                type={showConfirmPassword ? "text" : "password"}
+                type={showConfirmPassword ? 'text' : 'password'}
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="********"
@@ -141,14 +130,12 @@ const RegisterForm = () => {
               </button>
             </div>
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.confirmPassword}
+              {formik.errors.confirmPassword}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-NegroCarbon mb-1">
-              Direccion
-            </label>
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">Direccion</label>
             <input
               type="text"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
@@ -160,14 +147,12 @@ const RegisterForm = () => {
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.address}
+              {formik.errors.address}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-NegroCarbon mb-1">
-              Telefono
-            </label>
+            <label className="block text-sm font-medium text-NegroCarbon mb-1">Telefono</label>
             <input
               type="tel"
               className="placeholder:text-[14px] w-full px-4 py-2 border border-GrisClaro rounded-lg bg-Blanco text-NegroCarbon focus:outline-none focus:ring-1 focus:ring-GrisClaro"
@@ -179,32 +164,32 @@ const RegisterForm = () => {
               required
             />
             <div className="text-Verde-Azulado text-[14px] font-[var(--font-inter)]">
-            {formik.errors.phone}
+              {formik.errors.phone}
             </div>
           </div>
 
           <button
             type="submit"
-             disabled={ formik.isSubmitting || !(formik.isValid && formik.dirty)}
-
-             className={`w-full bg-azulElectrico text-Blanco py-2 rounded-lg font-semibold ${
-          !( formik.isValid && formik.dirty && !formik.isSubmitting) ? "opacity-50 cursor-not-allowed " : " hover:bg-Verde-Azulado transition-colors cursor-pointer "
-        }`}
+            disabled={formik.isSubmitting || !(formik.isValid && formik.dirty)}
+            className={`w-full bg-azulElectrico text-Blanco py-2 rounded-lg font-semibold ${
+              !(formik.isValid && formik.dirty && !formik.isSubmitting)
+                ? 'opacity-50 cursor-not-allowed '
+                : ' hover:bg-Verde-Azulado transition-colors cursor-pointer '
+            }`}
           >
-            
-            {formik.isSubmitting ? "Enviando Registro..." : "Enviar Registro"}
+            {formik.isSubmitting ? 'Enviando Registro...' : 'Enviar Registro'}
           </button>
         </form>
 
         <p className="text-sm text-center mt-5 text-NegroCarbon">
-          ¿Ya tienes una cuenta?{" "}
-          <Link href ={PATHROUTES.LOGIN}className="text-[#00C2A8] hover:underline">
+          ¿Ya tienes una cuenta?{' '}
+          <Link href={PATHROUTES.LOGIN} className="text-[#00C2A8] hover:underline">
             Inicia Sesion
           </Link>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RegisterForm;
+export default RegisterForm

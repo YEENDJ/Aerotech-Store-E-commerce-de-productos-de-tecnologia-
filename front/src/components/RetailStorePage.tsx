@@ -1,13 +1,12 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { MapPin } from "lucide-react";
-import { motion } from "framer-motion";
+import Image from 'next/image'
+import { MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-export default function   RetailStorePage() {
+export default function RetailStorePage() {
   return (
     <section className="w-full max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-
       {/* Información del punto físico */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -18,9 +17,8 @@ export default function   RetailStorePage() {
         <h2 className="text-3xl font-bold">Nuestro Punto Físico</h2>
 
         <p className="text-gray-700 mt-3 leading-relaxed">
-          Visítanos en nuestra tienda especializada en drones, donde podrás
-          ver productos en exhibición, recibir asesoría personalizada y
-          realizar tus compras de manera segura.
+          Visítanos en nuestra tienda especializada en drones, donde podrás ver productos en
+          exhibición, recibir asesoría personalizada y realizar tus compras de manera segura.
         </p>
 
         <div className="flex items-center gap-2 mt-4 text-lg font-semibold">
@@ -43,14 +41,13 @@ export default function   RetailStorePage() {
         className="grid grid-cols-2 gap-4"
       >
         <div className="relative h-40 rounded-xl overflow-hidden shadow-md">
-  <Image
-    src="/images/TiendaFisica1.jpg"
-    alt="Foto tienda 1"
-    fill
-    className="object-cover"
-  />
-</div>
-
+          <Image
+            src="/images/TiendaFisica1.jpg"
+            alt="Foto tienda 1"
+            fill
+            className="object-cover"
+          />
+        </div>
 
         <div className="relative h-40 rounded-xl overflow-hidden shadow-md">
           <Image
@@ -90,7 +87,7 @@ export default function   RetailStorePage() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
 
-         <div className="mt-6 grid sm:grid-cols-2 gap-4">
+        <div className="mt-6 grid sm:grid-cols-2 gap-4">
           <div>
             <p className="font-medium">Horario de atención</p>
             <p className="text-sm text-gray-500">Lunes - Viernes: 9:00 - 18:00</p>
@@ -105,5 +102,5 @@ export default function   RetailStorePage() {
         </div>
       </motion.div>
     </section>
-  );
+  )
 }

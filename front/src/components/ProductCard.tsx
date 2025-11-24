@@ -1,20 +1,16 @@
+'use client'
 
-"use client"
-
-import { IProducts } from "@/interfaces/Iproducts";
-import Link from "next/link";
-import ButtonAddToCart from "./ButtonAddToCart";
-
+import { IProducts } from '@/interfaces/Iproducts'
+import Link from 'next/link'
+import ButtonAddToCart from './ButtonAddToCart'
 
 interface CardProps {
-  product: IProducts;
+  product: IProducts
 }
 
 const ProductCard = ({ product }: CardProps) => {
   return (
-
-<div className="flex flex-col w-72 items-center bg-white rounded-xl shadow hover:shadow-lg transition p-4 gap-2">
-      
+    <div className="flex flex-col w-72 items-center bg-white rounded-xl shadow hover:shadow-lg transition p-4 gap-2">
       <img
         src={product.image}
         alt={product.name}
@@ -25,9 +21,7 @@ const ProductCard = ({ product }: CardProps) => {
         {product.name}
       </p>
 
-      <p className="text-[#007BFF] font-bold text-lg">
-        ${product.price.toLocaleString()}
-      </p>
+      <p className="text-[#007BFF] font-bold text-lg">${product.price.toLocaleString()}</p>
 
       <Link href={`/product/${product.id}`} className="w-full max-w-[220px]">
         <button className="cursor-pointer w-full bg-Verde-Azulado text-white px-3 py-2 rounded-lg hover:bg-azulElectrico transition text-sm">
@@ -36,10 +30,8 @@ const ProductCard = ({ product }: CardProps) => {
       </Link>
 
       <ButtonAddToCart product={product} />
-</div>
+    </div>
+  )
+}
 
-
-  );
-};
-
-export default ProductCard;
+export default ProductCard

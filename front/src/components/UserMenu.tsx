@@ -1,26 +1,24 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
-import { User } from "lucide-react"; // Ícono opcional (puedes reemplazarlo por una imagen)
-import Link from "next/link";
+'use client'
+import { useState, useRef, useEffect } from 'react'
+import { User } from 'lucide-react'
+import Link from 'next/link'
 
 export default function UserMenu() {
-  const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
 
-  // Cierra el menú si se hace clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpen(false);
+        setOpen(false)
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <div className="relative" ref={menuRef}>
-      {/* Botón del usuario */}
       <button
         onClick={() => setOpen(!open)}
         className="p-2 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white hover:opacity-90 transition"
@@ -28,7 +26,6 @@ export default function UserMenu() {
         <User size={24} />
       </button>
 
-      {/* Menú desplegable */}
       {open && (
         <div className="absolute right-0 mt-3 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
           <Link
@@ -47,5 +44,5 @@ export default function UserMenu() {
         </div>
       )}
     </div>
-  );
+  )
 }

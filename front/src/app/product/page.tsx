@@ -1,18 +1,16 @@
-import { getAllProductsService } from "@/Services/products.services";
-import ProductsList from "@/components/ProductsList";
+import { getAllProductsService } from '@/Services/products.services'
+import ProductsList from '@/components/ProductsList'
 
 const Productos = async () => {
-  // Obtenemos todos los productos
-  const allProducts = await getAllProductsService();
+  const allProducts = await getAllProductsService()
 
-  // Validación por si la respuesta viene vacía o incorrecta
-  const products = Array.isArray(allProducts) ? allProducts : [];
+  const products = Array.isArray(allProducts) ? allProducts : []
 
   return (
-    <div className="flex justify-center  bg-[#FFFFFF] ">
+    <div className="flex justify-center  bg-GrisClaro ">
       <ProductsList products={products} />
     </div>
-  );
-};
+  )
+}
 
-export default Productos;
+export default Productos

@@ -15,11 +15,11 @@
 
 //       <div
 //         className="
-//           grid 
-//           gap-8 
-//           sm:grid-cols-1 
-//           md:grid-cols-2 
-//           lg:grid-cols-3 
+//           grid
+//           gap-8
+//           sm:grid-cols-1
+//           md:grid-cols-2
+//           lg:grid-cols-3
 //           xl:grid-cols-4
 //           justify-items-center
 //         "
@@ -32,17 +32,14 @@
 //   );
 // };
 
-
-
 // export default ProductsList;
 
-
-import React from "react";
-import ProductCard from "@/components/ProductCard";
-import { IProducts } from "@/interfaces/Iproducts";
+import React from 'react'
+import ProductCard from '@/components/ProductCard'
+import { IProducts } from '@/interfaces/Iproducts'
 
 interface ProductsListProps {
-  products: IProducts[];
+  products: IProducts[]
 }
 
 const ProductsList = ({ products }: ProductsListProps) => {
@@ -53,7 +50,7 @@ const ProductsList = ({ products }: ProductsListProps) => {
       </h1>
 
       <div className="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto">
-        {products.map((product) => (
+        {products.map(product => (
           <div
             key={product.id}
             className="
@@ -77,7 +74,7 @@ const ProductsList = ({ products }: ProductsListProps) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductsList;
+export default ProductsList
