@@ -2,17 +2,18 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { PATHROUTES } from '@/utils/PathRoutes'
-import { AuthProvider, useAuth } from '@/contexts/AuthContext'
-import { LogOut, ShoppingCart, User } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
+import { ShoppingCart, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useCart } from '@/contexts/CartContext'
 
 const NavBar = () => {
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { dataUser, logout } = useAuth()
   const router = useRouter()
+  const { cartItems } = useCart()
 
-  // Cierra el menú al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -25,7 +26,6 @@ const NavBar = () => {
 
   return (
     <nav className=" flex items-center justify-between px-6 py-3 bg-[#003f6c] flex-row-reverse  fixed top-0 left-0 w-full  backdrop-blur shadow z-50">
-      {/* Logo centrado */}
       <div className="absolute left-1/2 transform -translate-x-1/2">
         <Link href={PATHROUTES.HOME}>
           <img
@@ -36,10 +36,7 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {/* Íconos */}
-
       <div className="flex items-center space-x-4 relative" ref={menuRef}>
-        {/* Ícono de usuario con menú */}
         <button onClick={() => setOpen(!open)}>
           <User
             size={32}
@@ -49,7 +46,6 @@ const NavBar = () => {
 
         {open && (
           <div className="absolute top-10 right-0 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
-            {/* Si NO hay usuario logueado */}
             {!dataUser ? (
               <>
                 <Link
@@ -67,15 +63,14 @@ const NavBar = () => {
                 </Link>
               </>
             ) : (
-              // Si SÍ hay usuario logueado
               <>
                 <p className="py-2 font-semibold text-gray-700">Hola, {dataUser.user.name}</p>
 
                 <div className="h-px bg-gray-200" />
                 <button
                   onClick={() => {
-                    logout() // 1️⃣ Cierra sesión
-                    router.push(PATHROUTES.LOGIN) // 2️⃣ Redirige al login
+                    logout()
+                    router.push(PATHROUTES.LOGIN)
                   }}
                   className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4  transition-colors duration-300 cursor-pointer"
                 >
@@ -96,10 +91,26 @@ const NavBar = () => {
 
         {dataUser && (
           <Link href={PATHROUTES.CART}>
-            <ShoppingCart
-              size={32}
-              className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition"
-            />
+            <div className="relative">
+              <ShoppingCart
+                size={32}
+                className="text-azulElectrico hover:text-Verde-Azulado h-18 hover:opacity-80 transition"
+              />
+
+              {cartItems.length > 0 && (
+                <span
+                  className="
+            absolute -top-1 -right-1 
+            bg-red-600 text-white text-xs font-bold 
+            rounded-full w-5 h-5 
+            flex items-center justify-center
+            shadow
+          "
+                >
+                  {cartItems.length}
+                </span>
+              )}
+            </div>
           </Link>
         )}
       </div>

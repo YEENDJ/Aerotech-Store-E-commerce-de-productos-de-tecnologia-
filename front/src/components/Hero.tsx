@@ -49,8 +49,6 @@ export default function HeroVideoCarousel() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       />
-
-      {/* OVERLAY */}
       <div
         className="
       absolute inset-0 
@@ -95,7 +93,6 @@ export default function HeroVideoCarousel() {
         <ChevronRight size={32} className="text-white" />
       </button>
 
-      {/* INDICADORES */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
         {videos.map((video, index) => (
           <div

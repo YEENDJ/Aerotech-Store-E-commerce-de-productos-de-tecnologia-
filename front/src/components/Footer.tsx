@@ -10,8 +10,8 @@ export default function Footer() {
         </p>
 
         <div className="flex gap-6 text-sm">
-          <Link href={PATHROUTES.TERMS} className="hover:text-white transition">
-            Política de privacidad
+          <Link href={PATHROUTES.RETAILSTORE} className="hover:text-white transition">
+            Tienda Fisica
           </Link>
           <a href={PATHROUTES.TERMS} className="hover:text-white transition">
             Términos y condiciones

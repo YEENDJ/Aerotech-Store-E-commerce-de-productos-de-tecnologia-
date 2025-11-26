@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import { CheckCircle, Users, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { PATHROUTES } from '@/utils/PathRoutes'
@@ -19,7 +18,7 @@ export default function AboutUs() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-10">
-        <div className="bg-white p-8 rounded-2xl shadow">
+        <div className="bg-Blanco p-8 rounded-2xl shadow">
           <h2 className="text-2xl font-semibold mb-3">Nuestra Historia</h2>
           <p className="text-gray-600 leading-relaxed">
             Empezamos en 2021 como un pequeño proyecto apasionado por la tecnología aérea. Con el
@@ -66,7 +65,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-2xl shadow">
+      <div className="bg-Blanco p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4">¿Por qué elegirnos?</h2>
         <ul className="grid md:grid-cols-2 gap-4 text-gray-600">
           <li className="flex items-center gap-2">
@@ -84,7 +83,7 @@ export default function AboutUs() {
         </ul>
       </div>
 
-      <div className="bg-white p-8 rounded-2xl shadow">
+      <div className="bg-Blanco p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
           <Users className="w-6" /> Nuestro Equipo
         </h2>
@@ -114,7 +113,7 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-2xl shadow">
+      <div className="bg-Blanco p-8 rounded-2xl shadow">
         <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
           <ShieldCheck className="w-6" /> Garantías y Confianza
         </h2>

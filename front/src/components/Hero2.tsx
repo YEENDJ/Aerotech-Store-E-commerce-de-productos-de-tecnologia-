@@ -1,8 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Link from 'next/link'
 
 export default function HeroVideo2() {
   return (
@@ -17,7 +12,6 @@ export default function HeroVideo2() {
         className="absolute inset-0 w-full h-full object-cover bg-GrisClaro"
       />
 
-      {/* OVERLAY */}
       <div
         className="
       absolute inset-0 

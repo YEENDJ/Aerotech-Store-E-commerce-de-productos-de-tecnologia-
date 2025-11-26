@@ -16,7 +16,7 @@ const ButtonAddToCart = ({ product }: ButtonProps) => {
   return (
     <button
       onClick={handleAddToCart}
-      className="cursor-pointer w-full bg-azulElectrico text-white px-4 py-2 rounded-lg hover:bg-Verde-Azulado transition  flex items-center justify-center text-sm"
+      className="cursor-pointer w-full bg-azulElectrico text-Blanco px-4 py-2 rounded-lg hover:bg-Verde-Azulado transition  flex items-center justify-center text-sm"
     >
       Agregar al
       <ShoppingCart size={20} className="ml-2" />

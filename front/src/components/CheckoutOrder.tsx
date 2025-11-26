@@ -41,7 +41,6 @@ export default function Checkout() {
     }
   }
 
-  // 🟦 Autocompletar datos desde el contexto
   useEffect(() => {
     if (dataUser?.user) {
       setForm(prev => ({
@@ -73,7 +72,6 @@ export default function Checkout() {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-xl p-6 flex flex-col gap-6"
       >
-        {/* Datos personales */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
@@ -98,7 +96,6 @@ export default function Checkout() {
           />
         </div>
 
-        {/* Dirección */}
 
         <input
           type="text"
@@ -121,7 +118,6 @@ export default function Checkout() {
           required
         />
 
-        {/* Pago */}
         <h2 className="text-xl font-semibold mt-4">Información de pago</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
@@ -157,7 +153,6 @@ export default function Checkout() {
 
         <button
           onClick={() => {
-            // Validación de campos vacíos
             if (!form.cardNumber || !form.exp || !form.cvc) {
               Swal.fire({
                 title: 'Campos incompletos',
@@ -165,10 +160,9 @@ export default function Checkout() {
                 icon: 'warning',
                 confirmButtonText: 'Entendido',
               })
-              return // ❌ no sigue, no redirige
+              return 
             }
 
-            // Si todo está bien → checkout y redirect
             handleCheckout()
             Swal.fire({
               title: '¡Compra exitosa!',

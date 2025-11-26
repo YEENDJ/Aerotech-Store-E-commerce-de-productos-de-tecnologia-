@@ -4,11 +4,10 @@ import { IProducts } from '@/interfaces/Iproducts'
 import { getAllProductByIdService } from '@/Services/products.services'
 
 interface FeaturedProductsProps {
-  featuredIds: string[] // los IDs de los productos destacados
+  featuredIds: string[]
 }
 
 const FeaturedProducts = async ({ featuredIds }: FeaturedProductsProps) => {
-  // obtenemos los productos por ID
   const featuredProducts: IProducts[] = []
 
   for (const id of featuredIds) {

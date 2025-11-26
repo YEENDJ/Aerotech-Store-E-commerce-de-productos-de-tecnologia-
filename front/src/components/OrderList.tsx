@@ -69,10 +69,8 @@ function OrderList() {
 
       <h2 className="text-xl font-bold mb-4 mx-auto w-fit">Listado de Órdenes</h2>
 
-      {/* Loading */}
       {isLoading && <p className="text-blue-600 font-semibold">Cargando órdenes...</p>}
 
-      {/* Error */}
       {error && (
         <div>
           <p className="text-red-500 font-semibold bg-red-100 p-2 rounded">{error}</p>
@@ -80,12 +78,10 @@ function OrderList() {
         </div>
       )}
 
-      {/* Si no hay órdenes */}
       {!isLoading && !error && orders.length === 0 && (
         <p className="text-gray-600">No hay órdenes registradas.</p>
       )}
 
-      {/* Tabla */}
       {!isLoading && !error && orders.length > 0 && (
         <div className="overflow-x-auto mt-3 ">
           <table className="min-w-full shadow-md rounded-lg overflow-hidden bg-GrisClaro">

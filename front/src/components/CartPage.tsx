@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { PATHROUTES } from '@/utils/PathRoutes'
 
 const CartPage = () => {
-  const { cartItems, getTotal, removeFromCart, clearCart, getIdItems, getTotalEnvio } = useCart()
+  const { cartItems, getTotal, removeFromCart, clearCart, getTotalEnvio } = useCart()
   const router = useRouter()
 
   return (
