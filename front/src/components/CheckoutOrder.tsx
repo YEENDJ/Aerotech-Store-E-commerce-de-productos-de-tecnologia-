@@ -21,7 +21,6 @@ export default function Checkout() {
   })
 
   const { clearCart, getIdItems } = useCart()
-
   const { dataUser } = useAuth()
 
   const handleCheckout = async () => {
@@ -63,6 +62,27 @@ export default function Checkout() {
     e.preventDefault()
     console.log('Checkout info:', form)
   }
+
+  const [isLoading, setIsLoading] = useState(true);
+  
+     useEffect(() => {
+      const user = localStorage.getItem("userSession");
+  
+      if (!user) {
+        Swal.fire({
+                title: 'Ooops',
+                text: 'Esta ruta no esta permitida Por favor Inicia Sesion',
+                icon: 'warning',
+                timer: 3000,
+                showConfirmButton: false,
+              })
+        router.replace("/login");
+      } else {
+        setIsLoading(false);
+      }
+    }, []);
+  
+    if (isLoading) return null;
 
   return (
     <section className="w-full max-w-3xl mx-auto p-6 flex flex-col gap-6 bg-GrisClaro">

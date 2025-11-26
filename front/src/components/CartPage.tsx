@@ -6,10 +6,31 @@ import Link from 'next/link'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import { PATHROUTES } from '@/utils/PathRoutes'
+import { useEffect, useState } from 'react'
 
 const CartPage = () => {
   const { cartItems, getTotal, removeFromCart, clearCart, getTotalEnvio } = useCart()
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true);
+
+   useEffect(() => {
+    const user = localStorage.getItem("userSession");
+
+    if (!user) {
+      Swal.fire({
+              title: 'Ooops',
+              text: 'Esta ruta no esta permitida Por favor Inicia Sesion',
+              icon: 'warning',
+              timer: 3000,
+              showConfirmButton: false,
+            })
+      router.replace("/login");
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
+
+  if (isLoading) return null;
 
   return (
     <main className="min-h-screen bg-gray-50 ">
