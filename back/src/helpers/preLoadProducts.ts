@@ -68,7 +68,7 @@ const productsToPreLoad: IProduct[] = [
         "name": "DJI Mini 4K",
         "price": 1599900,
         "description": "El DJI Mini 4K es un dron ultraligero y portátil con cámara 4K, estabilización precisa y modos de vuelo inteligentes, perfecto para creadores en movimiento. La versión sencilla incluye el dron, una batería, control remoto, hélices de repuesto, cable USB-C, protector del gimbal y herramientas de montaje esenciales.",
-        "image": "https://dronerossantander.com/wp-content/uploads/2023/03/DJI-Mini-2-SE-2-scaled.jpg",
+        "image": "https://drontechx.com/wp-content/uploads/2023/12/1-2.jpg",
         "categoryId": 1,
         "stock": 10
     },
