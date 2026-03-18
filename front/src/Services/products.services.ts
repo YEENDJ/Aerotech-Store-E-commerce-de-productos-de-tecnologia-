@@ -1,8 +1,9 @@
 import { IProducts } from '@/interfaces/Iproducts'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'
 export const getAllProductsService = async () => {
   try {
-    const res = await fetch('http://localhost:3005/products', {
+    const res = await fetch(`${API_URL}/products`, {
       method: 'GET',
     })
     const products: IProducts[] = await res.json()

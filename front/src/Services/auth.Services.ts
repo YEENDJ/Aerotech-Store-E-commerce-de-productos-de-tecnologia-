@@ -1,9 +1,10 @@
 import { LoginFormValuesInterface } from '@/validators/loginSchema'
 import { RegisterFormValuesInterface } from '@/validators/registerSchema'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'
 export const registerUserService = async (userData: RegisterFormValuesInterface) => {
   try {
-    const res = await fetch('http://localhost:3005/users/register', {
+    const res = await fetch(`${API_URL}/users/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ export const registerUserService = async (userData: RegisterFormValuesInterface)
 
 export const loginUserService = async (userData: LoginFormValuesInterface) => {
   try {
-    const res = await fetch('http://localhost:3005/users/login', {
+    const res = await fetch(`${API_URL}/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData),

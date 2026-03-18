@@ -20,7 +20,8 @@ export default function CategoryProducts({ categoryId }: { categoryId: number })
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch('http://localhost:3005/products')
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'
+        const res = await fetch(`${API_URL}/products`)
         const data: Product[] = await res.json()
 
         const filtered = data.filter(item => item.categoryId === categoryId)
