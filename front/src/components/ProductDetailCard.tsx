@@ -5,6 +5,7 @@ import ButtonAddToCart from '@/components/ButtonAddToCart'
 import { useCart } from '@/contexts/CartContext'
 import Link from 'next/link'
 import { ArrowLeft, ShoppingCart } from 'lucide-react'
+import Image from 'next/image'
 
 interface ProductDetailCardProps {
   product: IProducts
@@ -40,10 +41,12 @@ const ProductDetailCard = ({ product }: ProductDetailCardProps) => {
           onMouseLeave={() => setShowZoom(false)}
           onMouseMove={handleMouseMove}
         >
-          <img
+          <Image
             src={product.image}
             alt={product.name}
             className="w-full max-w-sm h-auto object-contain rounded-lg"
+            width={384}
+            height={384}
           />
 
           {showZoom && (

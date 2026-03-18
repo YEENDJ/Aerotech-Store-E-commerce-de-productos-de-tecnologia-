@@ -30,7 +30,7 @@ export default function Checkout() {
     try {
       await createOrder(getIdItems(), dataUser.token)
       clearCart()
-    } catch (error) {
+    } catch  {
       Swal.fire({
         title: 'Error en la compra',
         text: 'Ocurrió un problema procesando tu pago. Inténtalo nuevamente.',
@@ -80,7 +80,7 @@ export default function Checkout() {
       } else {
         setIsLoading(false);
       }
-    }, []);
+    }, [router]);
   
     if (isLoading) return null;
 

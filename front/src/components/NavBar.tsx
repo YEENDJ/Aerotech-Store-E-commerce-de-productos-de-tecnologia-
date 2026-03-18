@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { ShoppingCart, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
+import Image from 'next/image'
 
 const NavBar = () => {
   const [open, setOpen] = useState(false)
@@ -28,10 +29,12 @@ const NavBar = () => {
     <nav className=" flex items-center justify-between px-6 py-3 bg-[#003f6c] flex-row-reverse  fixed top-0 left-0 w-full  backdrop-blur shadow z-50">
       <div className="absolute left-1/2 transform -translate-x-1/2">
         <Link href={PATHROUTES.HOME}>
-          <img
+          <Image
             src="/LogoAerotechStoreHorizontal.png"
             alt="logo horizontal"
-            className="h-26 mx-auto mt-1 flex"
+            className=" mx-auto mt-1 flex"
+            width={287}
+            height={104}
           />
         </Link>
       </div>

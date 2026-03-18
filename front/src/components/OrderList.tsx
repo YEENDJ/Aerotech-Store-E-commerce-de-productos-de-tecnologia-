@@ -3,7 +3,9 @@
 import { useAuth } from '@/contexts/AuthContext'
 import { Order } from '@/interfaces/IOrders'
 import { getAllOrders } from '@/Services/orders.Services'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 
 function OrderList() {
   const { dataUser } = useAuth()
@@ -11,6 +13,7 @@ function OrderList() {
   const [orders, setOrders] = useState<Order[]>([])
   const [isLoading, setIsloading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -36,6 +39,25 @@ function OrderList() {
 
     fetchOrders()
   }, [dataUser?.token])
+
+  useEffect(() => {
+    const user = localStorage.getItem('userSession')
+
+    if (!user) {
+      Swal.fire({
+        title: 'Ooops',
+        text: 'Esta ruta no esta permitida Por favor Inicia Sesion',
+        icon: 'warning',
+        timer: 3000,
+        showConfirmButton: false,
+      })
+      router.replace('/login')
+    } else {
+      setIsloading(false)
+    }
+  }, [router])
+
+  if (isLoading) return null
 
   return (
     <div className="w-full p-4 bg-GrisClaro">

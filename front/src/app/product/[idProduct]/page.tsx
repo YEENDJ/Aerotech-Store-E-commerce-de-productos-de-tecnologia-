@@ -17,7 +17,7 @@ const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 
   try {
     productDataid = await getAllProductByIdService(idProduct)
-  } catch (error) {
+  } catch  {
     notFound()
   }
   return (

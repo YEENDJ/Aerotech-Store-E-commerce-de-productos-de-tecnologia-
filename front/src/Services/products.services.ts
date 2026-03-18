@@ -7,9 +7,10 @@ export const getAllProductsService = async () => {
     })
     const products: IProducts[] = await res.json()
     return products
-  } catch (error: any) {
-    throw new Error(error)
-  }
+  }catch (error) {
+  console.error('Error obteniendo productos:', error)
+  throw error
+}
 }
 
 export const getAllProductByIdService = async (id: string) => {
@@ -20,7 +21,8 @@ export const getAllProductByIdService = async (id: string) => {
       throw new Error('No se encontro un producto con ese ID')
     }
     return product
-  } catch (error: any) {
-    throw new Error()
-  }
+  } catch (error) {
+  console.error('Error obteniendo producto:', error)
+  throw error
+}
 }

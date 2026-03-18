@@ -31,7 +31,7 @@ const RegisterForm = () => {
         swal('¡Listo!', 'Usuario registrado con éxito', 'success')
         resetForm()
         navigate.push(PATHROUTES.LOGIN)
-      } catch (error) {
+      } catch {
         swal('Error', 'Hubo un error al registrar el usuario', 'error')
         resetForm()
       }

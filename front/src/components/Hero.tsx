@@ -36,8 +36,6 @@ export default function HeroVideoCarousel() {
     setCurrent(prev => (prev - 1 + videos.length) % videos.length)
   }
 
-  const x = { a: 1 }
-
   return (
     <section className="relative h-[60vh] w-full overflow-hidden  flex ">
       <video

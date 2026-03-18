@@ -2,13 +2,9 @@ import Categorias from '@/components/Categories'
 import FeaturedProducts from '@/components/FeaturedProducts'
 import HeroVideo from '@/components/Hero'
 import HeroVideo2 from '@/components/Hero2'
-import { getAllProductsService } from '@/Services/products.services'
 import Productos from './product/page'
 
-
 const Home = async () => {
-  const allProducts = await getAllProductsService()
-
   return (
     <div className="bg-GrisClaro">
       <HeroVideo />

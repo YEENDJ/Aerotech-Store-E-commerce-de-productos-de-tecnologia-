@@ -37,7 +37,7 @@ export const registerValidationSchema = Yup.object({
 
   confirmPassword: Yup.string()
     .required('Es necesario confirmar la contraseña')
-    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir'),
+    .oneOf([Yup.ref('password'),], 'Las contraseñas deben coincidir'),
 
   name: Yup.string()
     .required('El nombre es un campo obligatorio')

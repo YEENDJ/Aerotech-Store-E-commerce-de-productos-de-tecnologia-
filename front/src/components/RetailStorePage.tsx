@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { MapPin } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 export default function RetailStorePage() {
   return (

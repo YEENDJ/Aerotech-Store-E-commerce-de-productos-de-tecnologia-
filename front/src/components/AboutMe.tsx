@@ -4,6 +4,7 @@ import React from 'react'
 import { CheckCircle, Users, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { PATHROUTES } from '@/utils/PathRoutes'
+import Image from 'next/image'
 
 export default function AboutUs() {
   return (
@@ -104,7 +105,7 @@ export default function AboutUs() {
               className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-lg"
             >
               <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden mb-3">
-                <img src={m.img} alt={m.name} className="w-full h-full object-cover" />
+                <Image src={m.img} alt={m.name} className="w-full h-full object-cover" />
               </div>
               <p className="font-medium">{m.name}</p>
               <p className="text-sm text-gray-500">{m.role}</p>

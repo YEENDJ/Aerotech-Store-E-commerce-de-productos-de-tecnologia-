@@ -7,30 +7,43 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import { PATHROUTES } from '@/utils/PathRoutes'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const CartPage = () => {
   const { cartItems, getTotal, removeFromCart, clearCart, getTotalEnvio } = useCart()
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
-   useEffect(() => {
-    const user = localStorage.getItem("userSession");
+  useEffect(() => {
+    if (cartItems.length === 5 ) {
+      Swal.fire({
+        title: '¡Felicitaciones!',
+        text: 'Eres un usuario Premium',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+      })
+    }
+  }, [cartItems.length])
+
+  useEffect(() => {
+    const user = localStorage.getItem('userSession')
 
     if (!user) {
       Swal.fire({
-              title: 'Ooops',
-              text: 'Esta ruta no esta permitida Por favor Inicia Sesion',
-              icon: 'warning',
-              timer: 3000,
-              showConfirmButton: false,
-            })
-      router.replace("/login");
+        title: 'Ooops',
+        text: 'Esta ruta no esta permitida Por favor Inicia Sesion',
+        icon: 'warning',
+        timer: 3000,
+        showConfirmButton: false,
+      })
+      router.replace('/login')
     } else {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, []);
+  }, [router])
 
-  if (isLoading) return null;
+  if (isLoading) return null
 
   return (
     <main className="min-h-screen bg-gray-50 ">
@@ -68,10 +81,12 @@ const CartPage = () => {
                   <div className="flex items-center gap-4 ">
                     <Link href={`/product/${item.id}`}>
                       <div className="w-24 h-16 flex-shrink-0">
-                        <img
+                        <Image 
                           src={item.image || '/placeholder.png'}
                           alt={item.name}
-                          className="w-19 duration-300 h-16 object-cover rounded-lg border transition-transform hover:scale-105"
+                          width={76}
+                          height={64}
+                          className="duration-300 object-cover rounded-lg border transition-transform hover:scale-105"
                         />
                       </div>
                     </Link>
@@ -134,6 +149,7 @@ const CartPage = () => {
                 </div>
               )}
             </div>
+
             <div className="mt-6 space-y-3">
               <button
                 onClick={() => {

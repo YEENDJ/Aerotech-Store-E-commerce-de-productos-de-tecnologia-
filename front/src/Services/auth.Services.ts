@@ -15,8 +15,8 @@ export const registerUserService = async (userData: RegisterFormValuesInterface)
     } else {
       throw new Error('Registro Fallido')
     }
-  } catch (error: any) {
-    throw new Error(error)
+  } catch  {
+    throw new Error('Error en el registro')
   }
 }
 
@@ -31,7 +31,8 @@ export const loginUserService = async (userData: LoginFormValuesInterface) => {
     const data = await res.json()
 
     return { ok: res.ok, data }
-  } catch (error: any) {
-    throw new Error(error.message || 'Error en la conexión')
+  } catch (error: unknown) {
+    throw new Error((error as Error).message || 'Error en la conexión')
   }
 }
+

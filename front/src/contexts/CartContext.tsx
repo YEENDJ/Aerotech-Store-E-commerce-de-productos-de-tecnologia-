@@ -4,7 +4,6 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { useAuth } from './AuthContext'
 import Swal from 'sweetalert2'
 
-const CARTLOCALSTORAGE = 'cart'
 
 interface CartContextProps {
   cartItems: IProducts[]
@@ -39,17 +38,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const CART_KEY = userId ? `cart_${userId}` : null
 
   useEffect(() => {
-    if (!CART_KEY) return 
+    if (!CART_KEY) return
 
     const saved = localStorage.getItem(CART_KEY)
+
     if (saved) {
-      setCarItem(JSON.parse(saved))
+      const parsed = JSON.parse(saved)
+
+      const cleanCart = parsed.filter((item: IProducts) => item && item.id)
+
+      setCarItem(cleanCart)
     } else {
-      setCarItem([]) 
+      setCarItem([])
     }
   }, [CART_KEY])
 
-  
   useEffect(() => {
     if (!CART_KEY) return
     localStorage.setItem(CART_KEY, JSON.stringify(cartItems))
@@ -66,8 +69,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       })
       return
     }
-
-    const ExistingProduct: boolean = cartItems.some(item => item.id === product.id)
+    const ExistingProduct = cartItems.some(item => item?.id === product.id)
     if (ExistingProduct) {
       Swal.fire({
         title: 'Ooops',
@@ -86,6 +88,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         showConfirmButton: false,
       })
     }
+    if (!product || !product.id) return
     setCarItem(prevItems => [...prevItems, product])
   }
 
@@ -96,7 +99,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const clearCart = () => {
     setCarItem([])
     if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.removeItem(CARTLOCALSTORAGE)
+      if (CART_KEY) {
+        localStorage.removeItem(CART_KEY)
+      }
     }
   }
 
@@ -109,7 +114,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const getIdItems = () => {
-    return cartItems.map(item => item.id)
+    return cartItems.filter(Boolean).map(item => item.id)
   }
 
   const getItemsCount = () => {

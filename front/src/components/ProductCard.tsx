@@ -3,6 +3,7 @@
 import { IProducts } from '@/interfaces/Iproducts'
 import Link from 'next/link'
 import ButtonAddToCart from './ButtonAddToCart'
+import Image from 'next/image'
 
 interface CardProps {
   product: IProducts
@@ -11,10 +12,12 @@ interface CardProps {
 const ProductCard = ({ product }: CardProps) => {
   return (
     <div className="flex flex-col w-72 items-center bg-white rounded-xl shadow hover:shadow-lg transition p-4 gap-2">
-      <img
+      <Image
         src={product.image}
         alt={product.name}
         className="w-full h-40 object-contain rounded-md"
+        width={256}
+        height={160}
       />
 
       <p className="text-center font-semibold text-gray-800 break-words whitespace-normal leading-tight min-h-[48px]">

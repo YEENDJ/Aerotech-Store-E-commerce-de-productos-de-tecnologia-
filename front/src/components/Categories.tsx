@@ -1,22 +1,8 @@
 import { PATHROUTES } from '@/utils/PathRoutes'
-import { Camera, Drone, Mic, ShoppingCart } from 'lucide-react'
+import { Camera, Drone, Mic } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Categorias() {
-  const items = [
-    {
-      title: 'Cámaras',
-      icon: <Camera className="w-10 h-10" />,
-    },
-    {
-      title: 'Drones',
-      icon: <Drone className="w-10 h-10" />,
-    },
-    {
-      title: 'Accesorios',
-      icon: <ShoppingCart className="w-10 h-10" />,
-    },
-  ]
 
   return (
     <section className="w-full py-10 bg-GrisClaro">
