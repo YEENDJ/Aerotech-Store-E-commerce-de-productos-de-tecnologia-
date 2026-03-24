@@ -28,7 +28,7 @@ const CartContext = createContext<CartContextProps>({
 })
 
 interface CartProviderProps {
-  children: React.ReactElement
+  children: React.ReactNode
 }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {

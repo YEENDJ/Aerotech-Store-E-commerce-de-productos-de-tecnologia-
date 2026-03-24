@@ -17,8 +17,28 @@ const NavBar = () => {
     <nav className="fixed top-0 left-0 w-full bg-[#003f6c]/90 backdrop-blur-md shadow-lg z-50 px-4 sm:px-6 py-2 sm:py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Left Section: User and Cart Icons */}
-        <div className="flex items-center space-x-2 sm:space-x-4 order-2 sm:order-1">
+        {/* Left Section: Placeholder or Navigation Links (Desktop) */}
+        <div className="hidden sm:block flex-1 order-1">
+          {/* Aquí podrías añadir links a futuro */}
+        </div>
+
+        {/* Center Section: Logo */}
+        <div className="flex-1 sm:flex-none flex justify-start sm:justify-center order-1 sm:order-2">
+          <Link href={PATHROUTES.HOME} className="transition-transform hover:scale-105 active:scale-95 text-center">
+            <div className="relative w-32 sm:w-48 md:w-56 h-8 sm:h-12 md:h-14">
+              <Image
+                src="/LogoAerotechStoreHorizontal.png"
+                alt="logo horizontal"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          </Link>
+        </div>
+
+        {/* Right Section: User and Cart Icons */}
+        <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-4 order-2 sm:order-3">
           <UserMenu />
 
           {dataUser && (
@@ -35,24 +55,6 @@ const NavBar = () => {
             </Link>
           )}
         </div>
-
-        {/* Center Section: Logo */}
-        <div className="flex-1 flex justify-center order-1 sm:order-2">
-          <Link href={PATHROUTES.HOME} className="transition-transform hover:scale-105 active:scale-95 text-center">
-            <div className="relative w-32 sm:w-48 md:w-56 h-8 sm:h-12 md:h-14">
-              <Image
-                src="/LogoAerotechStoreHorizontal.png"
-                alt="logo horizontal"
-                fill
-                priority
-                className="object-contain"
-              />
-            </div>
-          </Link>
-        </div>
-
-        {/* Right Section: Placeholder for balance on Desktop */}
-        <div className="hidden sm:block w-[80px] md:w-[120px] order-3"></div>
       </div>
     </nav>
   )

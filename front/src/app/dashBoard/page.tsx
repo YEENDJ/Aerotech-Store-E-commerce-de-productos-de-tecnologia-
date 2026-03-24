@@ -1,7 +1,7 @@
 import OrderList from '@/components/OrderList'
 import React from 'react'
 
-const orderListpage = () => {
+const DashboardPage = () => {
   return (
     <div>
       <OrderList />
@@ -9,4 +9,4 @@ const orderListpage = () => {
   )
 }
 
-export default orderListpage
+export default DashboardPage

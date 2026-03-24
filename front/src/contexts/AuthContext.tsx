@@ -18,7 +18,7 @@ const AuthContext = createContext<AuthContextProps>({
 })
 
 interface AuthProviderProps {
-  children: React.ReactElement
+  children: React.ReactNode
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
