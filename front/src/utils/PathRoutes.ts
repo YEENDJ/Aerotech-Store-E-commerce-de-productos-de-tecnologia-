@@ -1,6 +1,6 @@
 export enum PATHROUTES {
   CART = '/cart',
-  DASHBOARD = '/dashboard',
+  DASHBOARD = '/profile',
   HOME = '/',
   LOGIN = '/login',
   REGISTER = '/register',
