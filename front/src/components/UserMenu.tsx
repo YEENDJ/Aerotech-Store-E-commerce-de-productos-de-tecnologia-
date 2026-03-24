@@ -2,10 +2,15 @@
 import { useState, useRef, useEffect } from 'react'
 import { User } from 'lucide-react'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
+import { useRouter } from 'next/navigation'
+import { PATHROUTES } from '@/utils/PathRoutes'
 
 export default function UserMenu() {
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
+  const { dataUser, logout } = useAuth()
+  const router = useRouter()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,26 +26,56 @@ export default function UserMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="p-2 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white hover:opacity-90 transition"
+        className="p-1 sm:p-2 rounded-full hover:bg-white/10 text-azulElectrico hover:text-Verde-Azulado transition-all"
       >
-        <User size={24} />
+        <User size={28} className="cursor-pointer" />
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-3 w-44 bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col text-center z-50">
-          <Link
-            href="/login"
-            className="py-2 hover:bg-blue-50 text-gray-800 rounded-t-2xl transition"
-          >
-            Iniciar sesión
-          </Link>
-          <div className="h-px bg-gray-200" />
-          <Link
-            href="/register"
-            className="py-2 hover:bg-blue-50 text-gray-800 rounded-b-2xl transition"
-          >
-            Registrarse
-          </Link>
+        <div className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 flex flex-col text-center overflow-hidden z-[60]">
+          {!dataUser ? (
+            <>
+              <Link
+                href={PATHROUTES.LOGIN}
+                onClick={() => setOpen(false)}
+                className="py-2.5 bg-azulElectrico hover:bg-Verde-Azulado text-white font-semibold transition"
+              >
+                Iniciar sesión
+              </Link>
+              <Link
+                href={PATHROUTES.REGISTER}
+                onClick={() => setOpen(false)}
+                className="py-2.5 bg-gray-50 hover:bg-gray-100 text-azulElectrico font-semibold transition border-t border-gray-100"
+              >
+                Registrarse
+              </Link>
+            </>
+          ) : (
+            <>
+              <div className="py-3 px-4 bg-gray-50/50">
+                <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Usuario</p>
+                <p className="font-bold text-gray-800 truncate">{dataUser.user.name}</p>
+              </div>
+              <div className="h-px bg-gray-100" />
+              <Link
+                href={PATHROUTES.DASHBOARD}
+                onClick={() => setOpen(false)}
+                className="py-2.5 hover:bg-gray-50 text-gray-700 transition"
+              >
+                Ver Órdenes
+              </Link>
+              <button
+                onClick={() => {
+                  setOpen(false)
+                  logout()
+                  router.push(PATHROUTES.LOGIN)
+                }}
+                className="py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold transition cursor-pointer"
+              >
+                Cerrar sesión
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>
