@@ -47,7 +47,7 @@ const CartPage = () => {
 
   return (
     <main className="min-h-screen bg-gray-50 ">
-      <div className="bg-[#F8F9FA] shadow-sm px-6 py-4 flex items-center justify-between rounded-lg w-f">
+      <div className="bg-[#F8F9FA] shadow-sm px-4 sm:px-6 py-4 flex items-center justify-between rounded-lg w-full">
         <Link href="/product" className="flex">
           <ArrowLeft className="flex justify-start w-5 h-5 items-center" />
           <span className="flex ">Seguir comprando</span>
@@ -59,8 +59,8 @@ const CartPage = () => {
       </h1>
       <div className="w-8" />
 
-      <div className=" mx-auto p-6  gap-6 flex justify-center w-full  ">
-        <div className="flex flex-col justify-center items-center  bg-white rounded-xl shadow-none p-4 w-full">
+      <div className="mx-auto p-4 md:p-6 gap-6 flex flex-col lg:flex-row justify-center w-full max-w-7xl">
+        <div className="flex flex-col bg-white rounded-xl shadow-none p-4 w-full lg:flex-1">
           {cartItems.length === 0 ? (
             <div className="text-center py-16 w-full">
               <p className="text-gray-500 text-lg">🛍️ Tu carrito está vacío</p>
@@ -76,33 +76,32 @@ const CartPage = () => {
               {cartItems.map(item => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between border-b border-gray-200 py-4"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-200 py-4 gap-4"
                 >
-                  <div className="flex items-center gap-4 ">
-                    <Link href={`/product/${item.id}`}>
-                      <div className="w-24 h-16 flex-shrink-0">
+                  <div className="flex items-center gap-4 w-full sm:w-auto">
+                    <Link href={`/product/${item.id}`} className="flex-shrink-0">
+                      <div className="w-20 h-20 sm:w-24 sm:h-16 flex-shrink-0 relative">
                         <Image 
                           src={item.image || '/placeholder.png'}
                           alt={item.name}
-                          width={76}
-                          height={64}
+                          fill
                           className="duration-300 object-cover rounded-lg border transition-transform hover:scale-105"
                         />
                       </div>
                     </Link>
 
-                    <div>
-                      <h3 className="font-medium text-gray-800">{item.name}</h3>
-                      <p className="text-azulElectrico text-sm">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-gray-800 truncate">{item.name}</h3>
+                      <p className="text-azulElectrico text-sm font-semibold">
                         ${item.price.toLocaleString('es-CO')}
                       </p>
-                      <p className="text-gray-500 text-sm">{item.description}</p>
+                      <p className="text-gray-500 text-sm line-clamp-2 md:line-clamp-none">{item.description}</p>
                     </div>
                   </div>
 
                   <button
                     onClick={() => removeFromCart(item.id)}
-                    className="text-red-500 hover:text-red-600 transition"
+                    className="text-red-500 hover:text-red-600 transition self-end sm:self-auto"
                   >
                     <Trash2 className="cursor-pointer w-5 h-5" />
                   </button>
@@ -113,7 +112,7 @@ const CartPage = () => {
         </div>
 
         {cartItems.length > 0 && (
-          <div className="bg-white rounded-xl shadow p-6 h-fit w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+          <div className="bg-white rounded-xl shadow p-6 h-fit w-full lg:w-80 xl:w-96 shrink-0">
             <h2 className="text-lg font-semibold mb-4">Resumen de compra</h2>
 
             <div className="flex justify-between text-gray-700 mb-2">
