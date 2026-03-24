@@ -12,7 +12,13 @@ usersRouter.post("/register", validateUserRegister, registerUser);
 usersRouter.post("/login", validateUserLogin, login);
 
 usersRouter.get("/orders", checkLogin, async (req: Request, res: Response) => {
+  // El userId es inyectado por el middleware checkLogin desde el token JWT
   const { userId } = req.body;
+  
+  if (!userId) {
+    return res.status(401).send({ message: "UserId not found in token" });
+  }
+
   const orders = await OrderRepository.find({
     relations: ["products"],
     where: { user: { id: userId } },
